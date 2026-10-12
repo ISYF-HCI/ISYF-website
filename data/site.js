@@ -97,7 +97,9 @@ const legacyEventPages = [
 export const legacyRedirects = {
   ...Object.fromEntries(legacyEventPages.map((p) => [p, `/${upcoming.year}${p}`])),
   "/archive/infographics": "/2026/archive/infographics",
-  "/reflection": "/2026/reflection",
+  // The 2026 reflection page was never finished; its photos live on Photos
+  "/reflection": "/2026/photos",
+  "/2026/reflection": "/2026/photos",
 };
 
 // Pages of an archived site, flattened from its menu.
