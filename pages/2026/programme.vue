@@ -32,7 +32,7 @@
                   Open spreadsheet ↗
                 </a>
                 <iframe 
-                  :src="event.pdf + '#zoom=200'"
+                  :src="useBase(event.pdf) + '#zoom=200'"
                   type="application/pdf"
                   loading="lazy">
                 </iframe>
