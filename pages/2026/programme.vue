@@ -314,7 +314,7 @@ ul {
 </style>
 
 <script setup>
-import Timeline from "../components/timeline.vue";
+import Timeline from "~/components/timeline.vue";
 import { onMounted } from "vue";
 
 import { gsap } from "gsap";

@@ -85,17 +85,17 @@
           </p>
 
           <div class="button-row">
-            <a class="btn" :href="useBase('programme')">
+            <a class="btn" :href="useBase('2026/programme')">
               <span class="icon material-icons-outlined">event_note</span>
               What's the rest of the programme?
               <span class="icon material-icons-outlined">chevron_right</span>
             </a>
-            <a class="btn" :href="useBase('profiles/speakers')">
+            <a class="btn" :href="useBase('2026/profiles/speakers')">
               <span class="icon material-icons-outlined">person</span>
               Who will be speaking at ISYF?
               <span class="icon material-icons-outlined">chevron_right</span>
             </a>
-            <a class="btn" :href="useBase('faq')">
+            <a class="btn" :href="useBase('2026/faq')">
               <span class="icon material-icons-outlined">question_mark</span>
               I have a question!
               <span class="icon material-icons-outlined">chevron_right</span>
@@ -673,10 +673,10 @@ import { useBase } from '~/composables/useBase';
 
 /*await navigateTo('/profiles/speakers', { replace: true })*/
 import { onMounted } from "vue";
-import banner from "../components/masthead.vue";
-import Button from "../components/button/button.vue";
-import PrimaryHighlight from "../components/primaryHighlight.vue";
-import Letter from "../components/letter.vue";
+import banner from "~/components/masthead.vue";
+import Button from "~/components/button/button.vue";
+import PrimaryHighlight from "~/components/primaryHighlight.vue";
+import Letter from "~/components/letter.vue";
 
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";

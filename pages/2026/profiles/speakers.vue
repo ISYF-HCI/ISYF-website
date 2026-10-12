@@ -73,7 +73,6 @@
 <script setup>
 import { ref } from "vue";
 import { useRuntimeConfig } from '#imports'
-definePageMeta({ alias: ['/'] })
 
 // Base path for static assets 
 const assetBase = useRuntimeConfig().app.baseURL

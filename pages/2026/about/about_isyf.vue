@@ -154,7 +154,7 @@ section.goals {
 </style>
 
 <script setup>
-import PrimaryHighlight from "../components/primaryHighlight.vue";
+import PrimaryHighlight from "~/components/primaryHighlight.vue";
 import { ref, watch, onMounted, onUnmounted } from "vue";
 definePageMeta({
   layout: "masthead",
