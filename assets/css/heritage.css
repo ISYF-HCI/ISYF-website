@@ -23,9 +23,7 @@
      deeper shade so it stays readable. */
   --crimson: #e10a19;
   --crimson-deep: #b0101a;
-  --crimson-bright: #e10a19;
   --gilt: #e6c878;
-  --gilt-soft: #f1e0b0;
 
   --font: "Lexend", "Helvetica Neue", Arial, sans-serif;
   --font-display: "Libre Caslon Display", "Libre Caslon Text", Georgia, serif;
@@ -38,8 +36,8 @@
   --primary-50: #fbeaeb;
   --primary-100: #f6cfd2;
   --primary-200: #eea4aa;
-  --primary-200-hsla: 8, 42%, 75%;
-  --primary-400: var(--crimson-bright);
+  --primary-200-hsla: 355, 71%, 79%;
+  --primary-400: var(--crimson);
   --primary-500: var(--crimson);
   --primary-600: var(--crimson-deep);
   --primary-900: #2a1716;
