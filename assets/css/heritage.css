@@ -356,8 +356,8 @@ html:has(#page.heritage) {
 
 /* ========== FOOTER (shared component, heritage skin) ========== */
 #page.heritage .footer-wrapper {
-  background-color: var(--crimson-deep);
-  border-top: 6px double var(--gilt);
+  /* Same dark grey as the archived sites' footer */
+  background-color: #21282c;
 }
 
 #page.heritage .footer {
@@ -373,12 +373,6 @@ html:has(#page.heritage) {
   font-variant: small-caps;
   text-transform: lowercase;
   letter-spacing: 0.08em;
-  --fg: var(--gilt);
-}
-
-#page.heritage .footer a:hover {
-  --fg: var(--gilt);
-  color: var(--gilt);
 }
 
 /* Contact details stay readable on phones, not just icons */

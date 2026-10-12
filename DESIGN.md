@@ -107,7 +107,7 @@ components:
 
 The ISYF-wide pages (home, history, laureates, the upcoming-edition page) borrow their materials from Hwa Chong Institution's clocktower building: cool plaster-white walls, crimson couplet panels lettered in gilt, and the school's honour boards where names are engraved year by year. The proof ISYF offers is lineage, so the system is built to set records: editions, years, themes and laureate names, ruled and ordered like a ledger rather than dressed up like a summit landing page.
 
-Density is editorial and calm. Plaster carries most of every page; ink hairlines divide it into ruled sections with a heading column; crimson arrives either as small, deliberate marks (years, links, the one primary plaque) or as a whole field (the honour board, the footer). Gilt appears only on crimson. Corners are nearly square, nothing floats on shadows, and motion is limited to one settling moment on the honour board and small arrow nudges.
+Density is editorial and calm. Plaster carries most of every page; ink hairlines divide it into ruled sections with a heading column; crimson arrives either as small, deliberate marks (years, links, the one primary plaque) or as a whole field (the honour board). Gilt appears only on crimson. Corners are nearly square, nothing floats on shadows, and motion is limited to one settling moment on the honour board and small arrow nudges.
 
 **Scope.** This world applies only where `layouts/template.vue` sets `#page.heritage`, which is every page that is not an archived edition. Archived edition sites (currently `/2026`) carry `#page.archived` and deliberately keep their original look from `assets/css/index.css` (Fraunces / Lexend, blue primary). Do not restyle them, and do not move heritage rules out of the `#page.heritage` scope: shared components (nav, footer, masthead, supporters) must render unchanged in archives. Heritage achieves its look by re-pointing the shared tokens (`--fg`, `--bg`, `--primary-*`, `--gray-*`, `--gold`) inside that scope.
 
@@ -127,11 +127,11 @@ A restrained plaster-and-ink ground with one heritage crimson that either marks 
 
 ### Primary
 - **Couplet Crimson** (crimson): the accent. Edition years, text links, the primary plaque, the selected filter underline, the history timeline's lozenges, selection highlight and focus ring. As a field it fills the honour board.
-- **Lacquer Crimson** (crimson-deep): the hover state of the plaque, the footer field, and the mobile menu panel. Also the text colour of a current year chip on gilt.
+- **Lacquer Crimson** (crimson-deep): the hover state of the plaque and the mobile menu panel. The footer stays the archive's dark grey (#21282c) by request. Also the text colour of a current year chip on gilt.
 - **Crimson Wash** (crimson-wash): the only tint. Marks a targeted row (`:target` laureate) or a highlighted coming-soon section on plaster.
 
 ### Secondary
-- **Honour Gilt** (gilt): lettering and frames on crimson only: board frame and dividers, year numerals on the board, the footer's double top rule and labels, hover colour of links on crimson, the 2027 masthead's meta line over photography.
+- **Honour Gilt** (gilt): lettering and frames on crimson only: board frame and dividers, year numerals on the board, hover colour of links on crimson,
 - **Pale Gilt** (gilt-soft): secondary text on crimson (board intro, laureate fields in italic, counts).
 
 ### Neutral
@@ -163,7 +163,7 @@ A restrained plaster-and-ink ground with one heritage crimson that either marks 
 - **Engraved name** (Libre Caslon Text 14-15px, uppercase, 0.08em): laureate names on crimson only, with the field beneath in italic Pale Gilt.
 - **Lede** (Lexend 350, 19px, 1.6, Soft Ink): the opening paragraph of a page (17px on mobile).
 - **Body** (Lexend 350, 16px, 1.65, max 68ch).
-- **Label** (Libre Caslon Text 15px, small caps via lowercase + `font-variant: small-caps`, 0.06em, Muted Ink): edition numbers and meta lines placed beside or after the thing they describe; footer group labels use the same treatment in gilt.
+- **Label** (Libre Caslon Text 15px, small caps via lowercase + `font-variant: small-caps`, 0.06em, Muted Ink): edition numbers and meta lines placed beside or after the thing they describe Footer group labels use the same treatment in plaster.
 
 ### Named Rules
 **The Engraved Names Rule.** Uppercase tracked serif is reserved for names on the honour board (and the nav's tracked Lexend items). Do not set headings or running text in caps.
@@ -193,7 +193,7 @@ Flat. Depth comes from tonal fields (plaster against crimson against lacquer cri
 
 ## Shapes
 
-Nearly square. Every corner that exists is 2px: plaque, select, current-year chip, focus ring, logo tiles, nav dropdown. Structure is drawn with lines: 1px ink rules opening sections, 1px stone rules between rows, a 1px vertical spine on the history timeline marked by small 9px diamond lozenges (filled crimson, or plaster with a crimson outline for the targeted and upcoming entries, whose spine turns dashed). The double frame (border plus offset outline) is the heritage silhouette: gilt on the board, crimson on the coming-soon notice; the footer opens with a 6px double gilt rule.
+Nearly square. Every corner that exists is 2px: plaque, select, current-year chip, focus ring, logo tiles, nav dropdown. Structure is drawn with lines: 1px ink rules opening sections, 1px stone rules between rows, a 1px vertical spine on the history timeline marked by small 9px diamond lozenges (filled crimson, or plaster with a crimson outline for the targeted and upcoming entries, whose spine turns dashed). The double frame (border plus offset outline) is the heritage silhouette: gilt on the board, crimson on the coming-soon notice.
 
 ## Components
 
