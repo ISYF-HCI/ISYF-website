@@ -1,5 +1,6 @@
 <template>
-  <div id="page">
+  <div id="page" :class="{ archived: archive }">
+    <ArchiveBar v-if="archive" :archive="archive" />
     <NavBar />
     <ButtonScroll />
 
@@ -10,6 +11,14 @@
     <Footer />
   </div>
 </template>
+
+<style>
+/* Room for the fixed archive bar shown above the nav on archived sites */
+#page.archived {
+  --archive-bar-height: 2.25rem;
+  padding-top: var(--archive-bar-height);
+}
+</style>
 
 <style scoped>
 #body {
@@ -23,10 +32,15 @@
 
 <script setup>
 import ButtonScroll from "../components/button/scroll.vue";
+import ArchiveBar from "../components/nav/archiveBar.vue";
+import { useArchive } from "~/composables/useArchive";
 import { ref, onMounted } from "vue";
 
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+
+const archive = useArchive();
+useHead(() => (archive.value ? { title: `${archive.value.title} (Archive)` } : {}));
 
 const height = ref(0);
 onMounted(() => {

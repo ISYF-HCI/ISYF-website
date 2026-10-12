@@ -71,7 +71,7 @@
 
 .days-wrapper-wrapper {
   position: sticky;
-  top: 3.5rem;
+  top: calc(3.5rem + var(--archive-bar-height, 0px));
   width: calc(100% + 2px);
   z-index: 10;
   background-color: var(--bg);

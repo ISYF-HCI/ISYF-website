@@ -6,7 +6,7 @@
 
         <div class="credits">
           <span class="copyright">
-            © International Science Youth Forum 2026. All rights reserved.
+            © International Science Youth Forum @ Singapore, {{ firstYear }}–{{ latestYear }}. All rights reserved.
           </span>
 
           <p>Made with ♡ by Tang Xuyuan and Nguyen Thien Minh Tuan</p>
@@ -35,17 +35,17 @@
           <div class="contact-list">
             <a
               class="item"
-              href="https://www.instagram.com/isyf.2026/"
+              :href="socials.instagram.url"
               target="_blank"
             >
-              <InstagramIcon /><span class="full-social">@isyf.2026</span>
+              <InstagramIcon /><span class="full-social">{{ socials.instagram.handle }}</span>
             </a>
             <a
               class="item"
-              href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg"
+              :href="socials.youtube.url"
               target="_blank"
             >
-              <YoutubeIcon /><span class="full-social">@isyfsg</span>
+              <YoutubeIcon /><span class="full-social">{{ socials.youtube.handle }}</span>
             </a>
           </div>
         </section>
@@ -55,8 +55,8 @@
           <div class="contact-list">
             <div class="contact">
               <span class="material-icons-outlined">mail</span>
-              <a href="mailto:reach_isyf@hci.edu.sg" target="_blank"
-                ><span class="full-social">reach_isyf@hci.edu.sg</span></a
+              <a :href="`mailto:${socials.email}`" target="_blank"
+                ><span class="full-social">{{ socials.email }}</span></a
               >
             </div>
             <div class="contact">
@@ -239,6 +239,10 @@ p {
 
 <script setup>
 import { useBase } from '~/composables/useBase';
+import { editions, firstYear } from '~/data/editions';
+import { socials } from '~/data/site';
 import InstagramIcon from "./icons/instagram.vue";
 import YoutubeIcon from "./icons/youtube.vue";
+
+const latestYear = editions[editions.length - 1].year;
 </script>
