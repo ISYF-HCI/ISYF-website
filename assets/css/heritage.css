@@ -1,8 +1,8 @@
 /*
  * Hwa Chong heritage: the look of the ISYF-wide pages (home, history,
  * laureates, upcoming edition). Taken from the clocktower building: plaster
- * white walls, crimson couplet panels with gilt lettering, and the school's
- * honour boards.
+ * white walls and the school's red, used sparingly as an accent, with
+ * laureates set like names on an honour board.
  *
  * Everything here is scoped to #page.heritage, which layouts/template.vue sets
  * on every page except archived edition sites. Archived sites (e.g. /2026)
@@ -18,9 +18,12 @@
   --ink-soft: #4d4542;
   --ink-mute: #6b625e;
   --rule: #d6d0c6;
-  --crimson: #8e1b1d;
-  --crimson-deep: #6f1416;
-  --crimson-bright: #b3262a;
+  /* Hwa Chong red, matched to the school's logo. Used as an accent only:
+     large numerals, rules, the primary button. Small red text uses the
+     deeper shade so it stays readable. */
+  --crimson: #e10a19;
+  --crimson-deep: #b0101a;
+  --crimson-bright: #e10a19;
   --gilt: #e6c878;
   --gilt-soft: #f1e0b0;
 
@@ -32,9 +35,9 @@
   --fg: var(--ink);
   --bg: var(--plaster);
   --primary: var(--crimson);
-  --primary-50: #f3e6e3;
-  --primary-100: #ead0cb;
-  --primary-200: #d9aaa3;
+  --primary-50: #fbeaeb;
+  --primary-100: #f6cfd2;
+  --primary-200: #eea4aa;
   --primary-200-hsla: 8, 42%, 75%;
   --primary-400: var(--crimson-bright);
   --primary-500: var(--crimson);
@@ -60,7 +63,7 @@ html:has(#page.heritage) {
 }
 
 #page.heritage ::selection {
-  background-color: var(--crimson);
+  background-color: var(--crimson-deep);
   color: var(--plaster);
 }
 
@@ -121,8 +124,8 @@ html:has(#page.heritage) {
 }
 
 .heritage a:hover {
-  --fg: var(--crimson);
-  color: var(--crimson);
+  --fg: var(--crimson-deep);
+  color: var(--crimson-deep);
 }
 
 #page.heritage main section {
@@ -186,8 +189,8 @@ html:has(#page.heritage) {
   gap: 0.5rem;
   min-height: 44px;
   font-weight: 500;
-  --fg: var(--crimson);
-  color: var(--crimson);
+  --fg: var(--crimson-deep);
+  color: var(--crimson-deep);
   text-decoration: underline;
   text-decoration-thickness: 1px;
 }
@@ -205,28 +208,13 @@ html:has(#page.heritage) {
   padding-block: 2.5rem 4rem;
 }
 
-/* Gilt-framed crimson field, after the school's honour boards */
+/* A featured section on the plaster ground: a red rule opens it and red
+   marks its numerals; the field itself stays calm */
 #page.heritage .board {
-  --fg: var(--plaster);
-  background-color: var(--crimson);
-  color: var(--plaster);
-  margin-inline: calc(50% - 50vw);
-  padding: clamp(3rem, 7vw, 6rem) max(1.5rem, calc(50vw - var(--content-width) / 2));
+  border-top: 2px solid var(--crimson);
+  padding-block: 2.5rem 4rem;
 }
 
-#page.heritage .board .frame {
-  border: 1px solid var(--gilt);
-  outline: 1px solid var(--gilt);
-  outline-offset: 6px;
-  padding: clamp(1.5rem, 4vw, 3rem);
-}
-
-
-
-#page.heritage .board a:hover {
-  --fg: var(--gilt);
-  color: var(--gilt);
-}
 
 /* A ruled row of plain links, e.g. an archived edition's pages */
 #page.heritage .link-row {
@@ -296,10 +284,10 @@ html:has(#page.heritage) {
 }
 
 #page.heritage nav .menu {
-  --bg: var(--crimson-deep);
+  --bg: #21282c;
 }
 
-/* Mobile menu sits on crimson, so its active links turn gilt */
+/* Mobile menu sits on dark grey, so its active links turn gilt */
 #page.heritage nav .menu .open .item,
 #page.heritage nav .menu .item:hover,
 #page.heritage nav .menu .subitems a:hover {
@@ -342,8 +330,8 @@ html:has(#page.heritage) {
   #page.heritage nav .menu .open .item,
   #page.heritage nav .menu .item:hover,
   #page.heritage nav .menu .subitems a:hover {
-    --fg: var(--crimson);
-    color: var(--crimson);
+    --fg: var(--crimson-deep);
+    color: var(--crimson-deep);
   }
 
   #page.heritage nav.transparent .menu .open .item,

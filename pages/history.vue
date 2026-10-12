@@ -115,7 +115,7 @@ h1 {
 }
 
 .year-jump a:hover {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
   text-decoration: underline;
 }
 

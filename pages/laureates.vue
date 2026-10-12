@@ -30,13 +30,8 @@
     </div>
 
     <div>
-      <section
-        v-for="group in groups"
-        :key="group.id"
-        class="group"
-        :class="{ board: group.id === 'nobel' }"
-      >
-        <div :class="{ frame: group.id === 'nobel' }">
+      <section v-for="group in groups" :key="group.id" class="group">
+        <div>
           <h2>
             {{ group.label }}
             <span class="count">{{ group.people.length }}</span>
@@ -81,9 +76,6 @@ h1 {
   --fg: var(--ink-mute);
 }
 
-.board .count {
-  --fg: var(--gilt-soft);
-}
 
 /* ========== FILTERS ========== */
 .filters {
@@ -123,11 +115,11 @@ h1 {
 }
 
 .category-filter button:hover {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
 }
 
 .category-filter button.selected {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
   border-bottom-color: var(--crimson);
   font-weight: 500;
 }
@@ -139,7 +131,7 @@ h1 {
 }
 
 .category-filter button.selected .count {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
 }
 
 .year-filter {
@@ -174,12 +166,8 @@ h1 {
   padding-block: 3rem 1rem;
 }
 
-.group.board {
-  margin-top: 2.5rem;
-  padding-block: clamp(2.5rem, 5vw, 4.5rem);
-}
 
-.group + .group:not(.board) {
+.group + .group {
   padding-top: 2rem;
 }
 
@@ -195,9 +183,6 @@ h1 {
   border-top: 1px solid var(--ink);
 }
 
-.board .people {
-  border-top-color: var(--gilt);
-}
 
 .person {
   scroll-margin-top: 9rem;
@@ -210,17 +195,11 @@ h1 {
   align-items: baseline;
 }
 
-.board .person {
-  border-bottom-color: rgba(230, 200, 120, 0.3);
-}
 
 .person:target {
   background-color: var(--primary-50);
 }
 
-.board .person:target {
-  background-color: rgba(230, 200, 120, 0.16);
-}
 
 .person h3 {
   margin: 0;
@@ -230,11 +209,6 @@ h1 {
   letter-spacing: 0;
 }
 
-.board .person h3 {
-  font-size: 15px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
 
 .honour {
   margin: 0;
@@ -243,11 +217,6 @@ h1 {
   --fg: var(--ink-soft);
 }
 
-.board .honour {
-  font-family: var(--font-serif);
-  font-style: italic;
-  --fg: var(--gilt-soft);
-}
 
 .years {
   list-style: none;
@@ -271,12 +240,9 @@ h1 {
   font-size: 18px;
   font-variant-numeric: lining-nums;
   text-decoration: none;
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
 }
 
-.board .years a {
-  --fg: var(--gilt);
-}
 
 .years a:hover {
   text-decoration: underline;
@@ -288,10 +254,6 @@ h1 {
   border-radius: 2px;
 }
 
-.board .years a.current {
-  --fg: var(--crimson-deep);
-  background-color: var(--gilt);
-}
 
 @media screen and (max-width: 760px) {
   .person {
@@ -316,7 +278,7 @@ h1 {
 .reset {
   min-height: 44px;
   margin-left: 0.5rem;
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
   font-weight: 500;
   text-decoration: underline;
 }

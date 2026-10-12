@@ -107,9 +107,8 @@
 .notice {
   margin-block: 2rem 0;
   padding: 1.5rem 1.75rem 0.5rem;
-  border: 1px solid var(--crimson);
-  outline: 1px solid var(--crimson);
-  outline-offset: 4px;
+  border-top: 2px solid var(--crimson);
+  background-color: var(--primary-50);
 }
 
 .notice h2 {
@@ -118,7 +117,7 @@
 }
 
 .notice a {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
   font-weight: 500;
 }
 
@@ -194,7 +193,7 @@
 }
 
 .explore a:hover h3 {
-  --fg: var(--crimson);
+  --fg: var(--crimson-deep);
 }
 
 .explore a:hover .arrow {

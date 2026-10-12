@@ -86,7 +86,7 @@
     </section>
 
     <section class="board">
-      <div class="frame">
+      <div>
         <div class="board-head">
           <h2>Nobel laureates at ISYF</h2>
           <p>
@@ -114,7 +114,7 @@
             </ul>
           </li>
         </ol>
-        <a class="text-link board-link" :href="useBase('laureates')">
+        <a class="text-link" :href="useBase('laureates')">
           Meet all {{ scientists.length }} laureates and scientists <ArrowIcon />
         </a>
       </div>
@@ -403,7 +403,7 @@
   gap: 1rem 3rem;
   align-items: end;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--gilt);
+  border-bottom: 1px solid var(--rule);
 }
 
 .board-head h2 {
@@ -413,7 +413,7 @@
 
 .board-head p {
   margin: 0;
-  --fg: var(--gilt-soft);
+  --fg: var(--ink-soft);
 }
 
 .roll {
@@ -422,7 +422,7 @@
   margin: 2rem 0 1.5rem;
   columns: 3 15rem;
   column-gap: 3rem;
-  column-rule: 1px solid rgba(230, 200, 120, 0.35);
+  column-rule: 1px solid var(--rule);
 }
 
 .roll-year {
@@ -449,7 +449,7 @@
   font-family: var(--font-display);
   font-size: 28px;
   line-height: 1;
-  --fg: var(--gilt);
+  --fg: var(--crimson);
 }
 
 .roll-year ul {
@@ -482,17 +482,11 @@
   font-family: var(--font-serif);
   font-style: italic;
   font-size: 14px;
-  --fg: var(--gilt-soft);
+  --fg: var(--ink-mute);
 }
 
 .roll-year a:hover .roll-name {
-  --fg: var(--gilt);
-}
-
-#page.heritage .board-link {
-  --fg: var(--gilt);
-  color: var(--gilt);
-  text-decoration-color: var(--gilt);
+  --fg: var(--crimson-deep);
 }
 
 @media screen and (max-width: 760px) {
@@ -596,7 +590,7 @@ const laureatesByFirstYear = Object.values(
 // "Nobel Prize in Physics, 2003" -> "Physics, 2003"
 const field = (honour) => honour.replace("Nobel Prize in ", "");
 
-// The honour board's one moment: names settle in, year by year, the first
+// The laureate roll's one moment: names settle in, year by year, the first
 // time the board scrolls into view. Without JS the names are simply shown.
 onMounted(() => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
