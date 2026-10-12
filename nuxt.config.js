@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   // Target: https://go.nuxtjs.dev/config-target
   target: "static",
   app: {
-    baseURL: '/',
+    baseURL: process.env.NUXT_APP_BASE_URL || "/",
     pageTransition: { name: "page", mode: "out-in" },
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
@@ -27,7 +27,7 @@ export default defineNuxtConfig({
         { name: "og:image", content: "https://isyf.hci.edu.sg/icon_light_solid.png" },
         { name: "google-site-verification", content: "ruZ7ymb2KZPXkT8UsU6_dJEUggZkb2sm9-mth5_sDCc" }
       ],
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [{ rel: "icon", type: "image/x-icon", href: (process.env.NUXT_APP_BASE_URL || "/") + "favicon.ico" }],
     },
   },
   
