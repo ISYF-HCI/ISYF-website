@@ -55,6 +55,12 @@ jobs:
           npm ci
           npx nuxi generate
           cp -r .output/public ../.output/public/version2
+          # GitHub Pages sites must stay under 1 GB, so the preview skips the
+          # large photo and infographic folders. Only the 2026 archive uses
+          # them, and it is the same as on the live site.
+          rm -rf "../.output/public/version2/event_images" \
+                 "../.output/public/version2/Infographic Creation Gallery"
+          du -sh ../.output/public
         env:
           NUXT_APP_BASE_URL: /ISYF-website/version2/
 
