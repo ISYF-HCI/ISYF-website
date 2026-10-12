@@ -1,4 +1,7 @@
-# ISYF 2026
+# ISYF Website
+
+The website of the International Science Youth Forum (ISYF) @ Singapore,
+covering every edition since 2009.
 
 This project is constructed using:
 
@@ -11,6 +14,39 @@ Planning and design specs can be found in the ISYF24 - MnP - Website
 Planning Document.
 A lot of effort was put into this aesthetic and interactivity, so please try
 to reuse/recycle as much of this as possible.
+
+## Site Structure
+
+- `/` is the ISYF home page, `/history` lists every edition and its theme,
+  and `/laureates` lists every Nobel laureate and eminent scientist invited.
+- `/2027` is the upcoming edition. Any `/2027/...` page that doesn't exist yet
+  (about, programme, profiles, photos, faq) redirects to the coming-soon page
+  at `/2027`. To publish one, add it under `pages/2027/` and it takes over
+  from the redirect.
+- `/2026` is the archived ISYF 2026 website, kept as it was with its own menu
+  and an "Archive" bar on top. Old root URLs (e.g. `/programme`) redirect to
+  their 2027 equivalents, see `legacyRedirects` in `data/site.js`.
+
+Content shared across pages lives in `data/`:
+
+- `data/editions.js`: every edition's year, number and theme, plus the
+  upcoming edition.
+- `data/scientists.js`: laureates and scientists, with the years they were
+  invited.
+- `data/site.js`: menus, socials, archived sites and redirects.
+
+### Starting a new edition
+
+When ISYF 2027 is over and 2028 begins:
+
+1. Add 2027 to `editions` in `data/editions.js` (with `archive: "2027"`) and
+   bump `upcoming` to 2028.
+2. Add the 2027 menu to `archives` in `data/site.js`, and point the
+   "Archive" menu and `upcomingSections` at the new archive.
+3. Add the year to returning guests and the new guests in
+   `data/scientists.js`.
+4. Create `pages/2028/index.vue` that renders `components/comingSoon.vue`
+   with the `masthead` layout.
 
 ## Styling
 

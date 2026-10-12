@@ -8,12 +8,15 @@
 
 <script setup>
 const props = defineProps({
-  background: { type: String, default: '' }
+  background: { type: String, default: '' },
+  // Darkens the background image, from 0 (none) to 1 (black)
+  dim: { type: Number, default: 0 }
 });
 
+const shade = `rgba(0, 0, 0, ${props.dim})`;
 const backgroundStyle = props.background
   ? {
-      backgroundImage: `url('${props.background}')`,
+      backgroundImage: `linear-gradient(${shade}, ${shade}), url('${props.background}')`,
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: '43% 50%',
@@ -36,6 +39,7 @@ onMounted(() => {
 }
 
 .masthead {
+  top: var(--archive-bar-height, 0px);
   text-align: center;
   --fg: var(--gray-100);
 

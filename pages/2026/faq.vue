@@ -70,7 +70,7 @@ h2 {
 </style>
 
 <script setup>
-import FAQQuestion from "../components/faqQuestion.vue";
+import FAQQuestion from "~/components/faqQuestion.vue";
 import { ref } from "vue";
 
 const questions = {

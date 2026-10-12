@@ -1,10 +1,10 @@
 <template>
   <nav :class="{ transparent: navTransparent }">
-    <a class="stamp" :href="useBase('')">
+    <a class="stamp" :href="useBase(archive ? `${archive.year}` : '')">
       <img class="logo light" :src="useBase('icon_light.webp')" alt="ISYF Logo" />
       <img class="logo dark" :src="useBase('icon_dark.webp')" alt="ISYF Logo" />
       <div class="text">
-        <div class="title">ISYF 2026</div>
+        <div class="title">{{ archive ? archive.title : "ISYF" }}</div>
       </div>
     </a>
 
@@ -15,73 +15,32 @@
       <a class="item close-button" @click="menuOpen = !menuOpen">
         <span class="material-icons-outlined">close</span>
       </a>
-      <a class="item" :href="useBase('')">
-        <span class="item-text">Home</span>
-      </a>
-      <div class="closed" :class="{ open: aboutOpen }">
-        <a class="item" @click="aboutOpen = !aboutOpen">
-          <span class="item-text"> About </span>
-          <span class="material-icons-outlined indicator">chevron_right</span>
-        </a>
-        <div class="subitems-wrapper">
-          <ul class="subitems">
-            <li>
-              <a :href="useBase('about/about_isyf')">
-                <span class="item-text">About ISYF</span>
-              </a>
-            </li>
-            <li>
-              <a :href="useBase('about/about_singapore')">
-                <span class="item-text">About Singapore</span>
-              </a>
-            </li>
-          </ul>
+      <template v-for="entry in menu" :key="entry.label">
+        <div v-if="entry.children" class="closed" :class="{ open: groupsOpen[entry.label] }">
+          <a class="item" @click="groupsOpen[entry.label] = !groupsOpen[entry.label]">
+            <span class="item-text"> {{ entry.label }} </span>
+            <span class="material-icons-outlined indicator">chevron_right</span>
+          </a>
+          <div class="subitems-wrapper">
+            <ul class="subitems">
+              <li v-for="child in entry.children" :key="child.href">
+                <a :href="useBase(child.href)">
+                  <span v-if="child.icon" class="material-icons-outlined icon">{{ child.icon }}</span>
+                  <span class="item-text">{{ child.label }}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <a class="item" :href="useBase('programme')">
-        <span class="item-text">Programme</span>
-      </a>
-      <div class="closed" :class="{ open: profilesOpen }">
-        <a class="item" @click="profilesOpen = !profilesOpen">
-          <span class="item-text"> Profiles </span>
-          <span class="material-icons-outlined indicator">chevron_right</span>
+        <a v-else class="item" :href="useBase(entry.href)">
+          <span class="item-text">{{ entry.label }}</span>
         </a>
-        <div class="subitems-wrapper">
-          <ul class="subitems">
-            <li>
-              <a :href="useBase('profiles/speakers')">
-                <span class="material-icons-outlined icon">person</span>
-                <span class="item-text">Speakers</span>
-              </a>
-            </li>
-            <li>
-              <a :href="useBase('profiles/schools')">
-                <span class="material-icons-outlined icon">school</span>
-                <span class="item-text">Schools</span>
-              </a>
-            </li>
-            <li>
-              <a :href="useBase('profiles/organising-team')">
-                <span class="material-icons-outlined icon">group</span>
-                <span class="item-text">Organising Team</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <a class="item" :href="useBase('photos')">
-        <span class="item-text">Photos</span>
-      </a>
-
-      <a class="item" :href="useBase('faq')">
-        <span class="item-text"> FAQ</span>
-      </a>
+      </template>
       <div class="socials">
-        <a class="item" href="https://www.instagram.com/isyf.2026/" target="_blank">
+        <a class="item" :href="socials.instagram.url" target="_blank">
           <InstagramIcon />
         </a>
-        <a class="item" href="https://www.youtube.com/channel/UCs9CbJcxC2x8OPYiNx5QDTg" target="_blank">
+        <a class="item" :href="socials.youtube.url" target="_blank">
           <YoutubeIcon />
         </a>
       </div>
@@ -104,7 +63,7 @@ a {
 nav {
   z-index: 100;
   position: fixed;
-  top: 0;
+  top: var(--archive-bar-height, 0px);
   left: 0;
   right: 2px;
   height: 3.5rem;
@@ -291,6 +250,7 @@ nav.transparent {
 .menu .subitems-wrapper {
   overflow: hidden;
   height: 0rem;
+  interpolate-size: allow-keywords;
   transition: height 200ms;
 }
 
@@ -305,7 +265,7 @@ nav.transparent {
   gap: 0.5rem;
   width: 100%;
 
-  transform: translateY(-110px);
+  transform: translateY(calc(-100% - 2rem));
   transition: transform 200ms;
 }
 
@@ -321,7 +281,7 @@ nav.transparent {
 
 .menu .open .subitems-wrapper,
 .menu .closed:hover .subitems-wrapper {
-  height: 120px;
+  height: auto;
 }
 
 .menu .open .subitems,
@@ -483,7 +443,8 @@ nav.transparent {
     position: relative;
     z-index: -1;
     margin-block: 0;
-    width: 11rem;
+    min-width: 11rem;
+    width: max-content;
     padding: 1rem 2.5rem 0.75rem 1.5rem;
 
     background-color: var(--bg);
@@ -492,7 +453,7 @@ nav.transparent {
     border: 1px solid var(--gray-500);
     border-top: none;
 
-    transform: translateY(-170px);
+    transform: translateY(calc(-100% - 2rem));
   }
 
   .menu .subitems a {
@@ -519,13 +480,18 @@ nav.transparent {
 
 <script setup>
 import { useBase } from '~/composables/useBase';
-import { ref, onMounted, onUnmounted } from "vue";
+import { useArchive } from '~/composables/useArchive';
+import { mainMenu, socials } from '~/data/site';
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import InstagramIcon from "../icons/instagram.vue";
 import YoutubeIcon from "../icons/youtube.vue";
 
-const aboutOpen = ref(false);
-const profilesOpen = ref(false);
+// Archived editions keep their own menu; everywhere else uses the main one.
+const archive = useArchive();
+const menu = computed(() => archive.value?.menu ?? mainMenu);
+
+const groupsOpen = ref({});
 const menuOpen = ref(false);
 
 // Scroll behaviour
