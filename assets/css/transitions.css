@@ -1,0 +1,51 @@
+.page-enter-active,
+.page-leave-active {
+  --trn-time: 450ms;
+  --trn-func: cubic-bezier(0.29, 0.11, 0.06, 1);
+  transition: all var(--trn-time) var(--trn-func);
+}
+.page-enter-from::before,
+.page-enter-to::before,
+.page-leave-from::before,
+.page-leave-to::before {
+  content: "";
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 120%;
+  left: 0;
+  transition: top var(--trn-time) var(--trn-func),
+    bottom var(--trn-time) var(--trn-func),
+    background-color var(--trn-time) cubic-bezier(0.75, 0, 0.25, 1);
+  background-color: hsla(var(--bg-hsla), 90%);
+  border-block: 1px solid hsla(var(--fg-hsla), 50%);
+}
+.page-leave-from::before {
+  top: 100vh;
+  background-color: hsla(var(--bg-hsla), 90%);
+}
+.page-leave-to::before {
+  top: 0;
+  background-color: hsla(var(--bg-hsla), 99%);
+}
+.page-enter-from::before {
+  bottom: 0;
+  background-color: hsla(var(--bg-hsla), 99%);
+}
+.page-enter-to::before {
+  bottom: 100vh;
+  background-color: hsla(var(--bg-hsla), 90%);
+}
+
+.scroll-shown.scroll-shown {
+  opacity: 1;
+  transform: none;
+}
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(25px);
+  transition-property: opacity, transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease-in-out;
+  transition-delay: var(--delay);
+}

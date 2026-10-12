@@ -1,0 +1,179 @@
+/* ========== OVERALL ========== */
+.profile p {
+  white-space: pre-line;
+}
+
+/* ========== COLLAGES ========== */
+.collage {
+  margin-inline: -0.75rem;
+}
+
+.collage .event {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(40%, 9rem), 1fr));
+  gap: 1.5rem 1rem;
+  margin-block: 2rem;
+  border-radius: 8px;
+}
+
+.collage .event-title {
+  word-spacing: 0.125em;
+  letter-spacing: -0.0125em;
+
+  grid-column: span 2;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 0.75rem 0.5rem;
+  border-radius: 8px;
+  background-color: var(--bg);
+  border: 1px solid var(--fg);
+}
+
+@media screen and (min-width: 590px) {
+  .collage .event-title {
+    font-size: 26px;
+  }
+}
+
+/* INDIVIDUAL PROFILE */
+
+.collage .profile {
+  position: relative;
+  aspect-ratio: 1;
+  transition: 200ms filter, 200ms box-shadow;
+  border-radius: 8px;
+
+  --clr-1: var(--primary-900);
+  --clr-2: var(--primary-950);
+  --stripe-width: 8px;
+  background-image: repeating-linear-gradient(-45deg,
+      var(--clr-1),
+      var(--clr-1) var(--stripe-width),
+      var(--clr-2) var(--stripe-width),
+      var(--clr-2) calc(var(--stripe-width) * 2));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collage .profile:hover {
+  filter: contrast(0.75) brightness(1.125);
+  box-shadow: 0px 0px 20px 2px #272f4066;
+}
+
+.collage .profile-img {
+  max-height: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.collage .name {
+  --fg: black;
+  position: absolute;
+  text-align: center;
+  padding: 0.25rem 1rem 0.375rem;
+  /* width: calc(100% - 2rem); */
+  font-weight: 600;
+  font-size: min(14px, 3.5vw);
+  filter: drop-shadow(2px 2px 7px hsla(var(--gray-900-hsla), 0.25));
+}
+
+/* ========== PROFILE INTROS ========== */
+.intros .profile {
+  margin-block: 2rem;
+  margin-top: 3rem;
+}
+
+.intros .scroll-banner-wrapper {
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+}
+
+.intros .scroll-banner {
+  display: block;
+  width: fit-content;
+  animation: text-scroll 108s linear infinite;
+}
+
+@keyframes text-scroll {
+  0% {
+    transform: translateX(-20%);
+  }
+
+  100% {
+    transform: translateX(-80%);
+  }
+}
+
+.intros h2 {
+  position: relative;
+  margin-block: 4rem 3rem;
+  line-height: 1.25em;
+  --padding: 0;
+  font-size: 30px;
+
+  --fg: var(--primary);
+  color: var(--fg);
+
+  white-space: nowrap;
+}
+
+.intros h2::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  right: calc(50% - 50vw);
+  left: calc(50% - 50vw);
+  top: -1.125rem;
+  bottom: -0.75rem;
+
+  border-block: 1px solid var(--fg);
+}
+
+.intros h3 {
+  font-size: 42px;
+  line-height: 1em;
+  margin-block: 2rem 0 1rem;
+}
+
+.intros h4 {
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  margin-block: 0.75rem;
+  color: var(--primary);
+}
+
+.intros img {
+  width: 100%;
+  border-radius: 8px;
+  width: 300px; 
+  height: 300px;
+  object-fit: cover;
+  border: 1px solid var(--fg);
+  flex: 0 0 300px;
+}
+
+@media screen and (min-width: 900px) {
+  .intros .profile {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin-left: -2rem;
+  }
+
+  .intros img {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  .intros .profile h3 {
+    display: inline;
+    margin-right: 1rem;
+  }
+
+  .intros .profile h4 {
+    display: inline-block;
+  }
+}
