@@ -60,13 +60,6 @@
         No one matches these filters.
         <button class="reset" @click="resetFilters">Show everyone</button>
       </p>
-
-      <p class="source-note">
-        Distinctions and positions are as listed when each guest was invited.
-        Compiled from the published records of past editions. Spotted something
-        missing? Let us know at
-        <a :href="`mailto:${socials.email}`">{{ socials.email }}</a>.
-      </p>
     </div>
   </div>
 </template>
@@ -256,16 +249,6 @@ h1 {
   font-weight: 500;
   text-decoration: underline;
 }
-
-.source-note {
-  margin-top: 3rem;
-  font-size: 14px;
-  --fg: var(--gray-500);
-}
-
-.source-note a {
-  --fg: var(--gray-500);
-}
 </style>
 
 <script setup>
@@ -273,7 +256,6 @@ import { ref, computed } from "vue";
 import { useBase } from "~/composables/useBase";
 import { editions, firstYear } from "~/data/editions";
 import { categories, scientists, scientistId } from "~/data/scientists";
-import { socials } from "~/data/site";
 
 useHead({ title: "Laureates & Scientists · ISYF" });
 

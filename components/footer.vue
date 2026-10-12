@@ -9,7 +9,7 @@
             © International Science Youth Forum @ Singapore, {{ firstYear }}–{{ latestYear }}. All rights reserved.
           </span>
 
-          <p>Made with ♡ by Tang Xuyuan and Nguyen Thien Minh Tuan</p>
+          <p>Made with ♡ by Fu Cai Gui, Tang Xuyuan and Nguyen Thien Minh Tuan</p>
           <p>Updated and maintained by Ernest Chan Ern Yi and Sophie Tung Xuan Ying</p>
           <p>Special thanks to Studio Ardent for photos & video</p>
 
@@ -239,10 +239,10 @@ p {
 
 <script setup>
 import { useBase } from '~/composables/useBase';
-import { editions, firstYear } from '~/data/editions';
+import { firstYear, upcoming } from '~/data/editions';
 import { socials } from '~/data/site';
 import InstagramIcon from "./icons/instagram.vue";
 import YoutubeIcon from "./icons/youtube.vue";
 
-const latestYear = editions[editions.length - 1].year;
+const latestYear = upcoming.year;
 </script>
