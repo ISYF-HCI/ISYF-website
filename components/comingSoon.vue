@@ -1,11 +1,10 @@
 <template>
   <div>
     <Masthead :background="useBase('images/night-clocktower.webp')" :dim="0.55">
-      <span class="masthead-meta">{{ ordinal(upcoming.edition) }} edition · coming soon</span>
       <h1>ISYF {{ upcoming.year }}</h1>
       <p class="masthead-lede">
         The {{ ordinal(upcoming.edition) }} International Science Youth Forum,
-        marking {{ yearsOfIsyf }} years of ISYF.
+        marking {{ yearsOfIsyf }} years of ISYF. Coming soon.
       </p>
     </Masthead>
 
@@ -95,15 +94,6 @@
 </template>
 
 <style scoped>
-.masthead-meta {
-  font-family: var(--font-serif);
-  font-variant: small-caps;
-  text-transform: lowercase;
-  letter-spacing: 0.1em;
-  font-size: 18px;
-  --fg: var(--gilt);
-}
-
 .masthead-lede {
   max-width: 34ch;
   margin: 0 auto;

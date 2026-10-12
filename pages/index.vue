@@ -132,18 +132,18 @@
         <li class="theme upcoming-theme">
           <a class="theme-year" :href="useBase(`${upcoming.year}`)">{{ upcoming.year }}</a>
           <div>
-            <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
             <span class="theme-name missing">To be announced</span>
+            <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
           </div>
         </li>
         <li class="theme" v-for="edition in editionsNewestFirst" :key="edition.year">
           <a class="theme-year" :href="useBase(`history#y${edition.year}`)">{{ edition.year }}</a>
           <div>
-            <span class="meta">
-              {{ ordinal(edition.edition) }} edition<template v-if="edition.online"> · held online</template>
-            </span>
             <span class="theme-name" :class="{ missing: !edition.theme }">
               {{ edition.theme ?? edition.note }}
+            </span>
+            <span class="meta">
+              {{ ordinal(edition.edition) }} edition<template v-if="edition.online"> · held online</template>
             </span>
           </div>
         </li>
@@ -200,7 +200,10 @@
 /* ========== HERO ========== */
 .hero {
   --pad: max(1.5rem, calc(50vw - var(--content-width) / 2));
-  --split: 44vw;
+  /* The title runs about 4.3 of its own sizes wide; the photo starts a
+     letter or so before its longest line ends, so the words cross into it */
+  --title-size: clamp(56px, 7.5vw, 112px);
+  --split: max(calc(var(--pad) + 3.5 * var(--title-size)), 36vw);
 
   position: relative;
   margin: -1rem calc(50% - 50vw) 0;
@@ -251,7 +254,7 @@
 .hero-title {
   margin: 0 0 1.75rem;
   font-family: var(--font-display);
-  font-size: clamp(56px, 8.2vw, 136px);
+  font-size: var(--title-size);
   line-height: 0.98;
   letter-spacing: -0.02em;
   max-width: 11ch;
@@ -274,6 +277,7 @@
 }
 
 .hero-actions {
+  max-width: calc(var(--split) - var(--pad) - 2rem);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -311,6 +315,10 @@
   .hero-title-over,
   .hero-shade {
     display: none;
+  }
+
+  .hero-actions {
+    max-width: none;
   }
 
   #page.heritage .hero .lede {
@@ -567,7 +575,7 @@ import Supporters from "~/components/supporters.vue";
 import ArrowIcon from "~/components/icons/arrow.vue";
 import { editions, upcoming, firstYear, ordinal } from "~/data/editions";
 import { scientists, scientistId } from "~/data/scientists";
-import { archives } from "~/data/site";
+import { archives, goals } from "~/data/site";
 
 const editionsNewestFirst = [...editions].reverse();
 const archivedEditions = editionsNewestFirst.filter((e) => e.archive);
@@ -587,22 +595,6 @@ const laureatesByFirstYear = Object.values(
 
 // "Nobel Prize in Physics, 2003" -> "Physics, 2003"
 const field = (honour) => honour.replace("Nobel Prize in ", "");
-
-// Abridged from the forum's goals (components/goals.vue)
-const goals = [
-  {
-    title: "Inspire Passion for Science Among Youth",
-    text: "Invited Nobel laureates and eminent scientists will inspire them through stories of their own life experiences and scientific discoveries.",
-  },
-  {
-    title: "Establish Cooperation and Friendship Amongst Young Talented Science Students",
-    text: "Students will have many opportunities to interact in different cross-cultural groups and forge strong bonds with each other throughout the Forum.",
-  },
-  {
-    title: "Build Capacities of Science Educators",
-    text: "Through professional sharing and discussions among Science educators, ISYF helps build the competencies of teachers who are navigating an evolving educational landscape.",
-  },
-];
 
 // The honour board's one moment: names settle in, year by year, the first
 // time the board scrolls into view. Without JS the names are simply shown.

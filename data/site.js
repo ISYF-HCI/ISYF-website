@@ -19,6 +19,23 @@ export const upcomingSections = [
   { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq" },
 ];
 
+// The forum's three goals, abridged for the home page. The full text is in
+// components/goals.vue on the archived About page.
+export const goals = [
+  {
+    title: "Inspire Passion for Science Among Youth",
+    text: "Invited Nobel laureates and eminent scientists will inspire them through stories of their own life experiences and scientific discoveries.",
+  },
+  {
+    title: "Establish Cooperation and Friendship Amongst Young Talented Science Students",
+    text: "Students will have many opportunities to interact in different cross-cultural groups and forge strong bonds with each other throughout the Forum.",
+  },
+  {
+    title: "Build Capacities of Science Educators",
+    text: "Through professional sharing and discussions among Science educators, ISYF helps build the competencies of teachers who are navigating an evolving educational landscape.",
+  },
+];
+
 export const mainMenu = [
   { label: "Home", href: "" },
   {

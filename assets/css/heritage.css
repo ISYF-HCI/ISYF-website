@@ -54,6 +54,11 @@
   font-weight: 350;
 }
 
+/* The page ground shows above #page where a layout's top margin collapses */
+html:has(#page.heritage) {
+  background-color: #f6f5f1;
+}
+
 #page.heritage ::selection {
   background-color: var(--crimson);
   color: var(--plaster);
@@ -302,6 +307,17 @@
   color: var(--gilt);
 }
 
+/* Keep the ISYF stamp in the nav over masthead photos too */
+@media screen and (min-width: 1100px) {
+  #page.heritage nav.transparent {
+    justify-content: space-between;
+  }
+
+  #page.heritage nav.transparent .stamp {
+    display: flex;
+  }
+}
+
 #page.heritage nav .socials {
   border-radius: 2px;
 }
@@ -363,6 +379,21 @@
 #page.heritage .footer a:hover {
   --fg: var(--gilt);
   color: var(--gilt);
+}
+
+/* Contact details stay readable on phones, not just icons */
+@media screen and (max-width: 600px) {
+  #page.heritage .footer .full-social {
+    display: inline;
+  }
+
+  #page.heritage .footer .contact-list {
+    flex-direction: column;
+  }
+
+  #page.heritage .footer .contact {
+    gap: 0.75rem;
+  }
 }
 
 #page.heritage .footer .organizers img {

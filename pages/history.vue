@@ -10,18 +10,24 @@
     </p>
 
     <nav class="year-jump" aria-label="Jump to year">
-      <a v-for="year in allYears" :key="year" :href="`#y${year}`">{{ year }}</a>
+      <div v-for="decade in decades" :key="decade.label" class="decade">
+        <span class="decade-label">{{ decade.label }}</span>
+        <a v-for="year in decade.years" :key="year" :href="`#y${year}`">{{ year }}</a>
+      </div>
     </nav>
 
     <ol class="timeline">
       <li v-for="edition in editions" :key="edition.year" :id="`y${edition.year}`" class="entry">
-        <div class="entry-year">{{ edition.year }}</div>
-        <div class="entry-body">
+        <div class="entry-year">
+          {{ edition.year }}
           <span class="meta">
-            {{ ordinal(edition.edition) }} edition<template v-if="edition.online"> · held online</template><template v-if="edition.archive"> · website archived</template>
+            {{ ordinal(edition.edition) }} edition<template v-if="edition.online"><br />held online</template>
           </span>
+        </div>
+        <div class="entry-body">
           <h2 v-if="edition.theme" class="entry-theme">“{{ edition.theme }}”</h2>
           <p v-else class="entry-theme missing">Theme not on record</p>
+          <p v-if="edition.archive" class="entry-note">Its website is kept as an archive.</p>
           <p v-if="edition.dates || edition.note" class="entry-note">
             <template v-if="edition.dates">{{ edition.dates }}. </template>{{ edition.note }}
           </p>
@@ -46,10 +52,12 @@
       </li>
 
       <li :id="`y${upcoming.year}`" class="entry upcoming">
-        <div class="entry-year">{{ upcoming.year }}</div>
+        <div class="entry-year">
+          {{ upcoming.year }}
+          <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
+        </div>
         <div class="entry-body">
-          <span class="meta">{{ ordinal(upcoming.edition) }} edition · coming soon</span>
-          <p class="entry-theme missing">Theme to be announced</p>
+          <p class="entry-theme missing">Coming soon. Theme to be announced</p>
           <a class="text-link" :href="useBase(`${upcoming.year}`)">
             Follow ISYF {{ upcoming.year }} <ArrowIcon />
           </a>
@@ -72,11 +80,26 @@ h1 {
 
 /* ========== YEAR JUMP ========== */
 .year-jump {
-  display: flex;
-  flex-wrap: wrap;
   margin: 2.5rem 0 1rem;
   border-top: 1px solid var(--ink);
+}
+
+/* One row per decade, so new years never strand alone on a row */
+.decade {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   border-bottom: 1px solid var(--rule);
+}
+
+.decade-label {
+  width: 4.5rem;
+  font-family: var(--font-serif);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  font-size: 14px;
+  --fg: var(--ink-mute);
 }
 
 .year-jump a {
@@ -118,6 +141,11 @@ h1 {
   text-align: right;
   --fg: var(--crimson);
   font-variant-numeric: lining-nums;
+}
+
+.entry-year .meta {
+  margin-top: 0.5rem;
+  line-height: 1.3;
 }
 
 .entry-body {
@@ -225,6 +253,9 @@ h1 {
     text-align: left;
     font-size: 36px;
     padding: 0 0 0.75rem 2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
     border-left: 1px solid var(--ink);
     margin-left: 0;
   }
@@ -239,6 +270,15 @@ h1 {
 
   .entry-body::before {
     top: -2.6rem;
+  }
+
+  .entry-year .meta br {
+    display: none;
+  }
+
+  .decade-label {
+    width: 100%;
+    padding-top: 0.5rem;
   }
 
   .entry-theme {
@@ -267,6 +307,15 @@ useHead({ title: "Editions & Themes · ISYF" });
 
 const yearsOfIsyf = upcoming.year - firstYear + 1;
 const allYears = [...editions.map((e) => e.year), upcoming.year];
+
+// Year links grouped by decade: "2000s", "2010s", ...
+const decades = Object.values(
+  allYears.reduce((groups, year) => {
+    const label = `${Math.floor(year / 10) * 10}s`;
+    (groups[label] ??= { label, years: [] }).years.push(year);
+    return groups;
+  }, {})
+);
 
 // A year's guests, grouped by distinction ("Nobel laureates", ...)
 function guestGroups(year) {
