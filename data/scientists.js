@@ -86,6 +86,7 @@ export const scientists = [
   { name: "Dr Neerja Karnani", category: "scientist", honour: "Senior Principal Investigator, Singapore Institute for Clinical Sciences, A*STAR", years: [2020] },
   { name: "Dr Pavitra Krishnaswamy", category: "scientist", honour: "Deputy Division Head, Institute for Infocomm Research, A*STAR", years: [2020] },
   { name: "Professor Ho Teck Hua", category: "scientist", honour: "Senior Deputy President and Provost, NUS", years: [2020] },
+  { name: "Professor Hans-Albert Bachor", category: "scientist", honour: "Emeritus Professor, Research School of Physics, Australian National University", years: [2021] },
   { name: "Professor Lim Tit Meng", category: "scientist", honour: "Chief Executive, Science Centre Singapore", years: [2021] },
   { name: "Professor Joseph Sung", category: "scientist", honour: "Dean, Lee Kong Chian School of Medicine, NTU", years: [2022] },
   { name: "Professor Bertil Andersson", category: "scientist", honour: "Former President, Nanyang Technological University", years: [2023] },

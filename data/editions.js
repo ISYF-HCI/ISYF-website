@@ -33,7 +33,7 @@ export const editions = [
   {
     year: 2021,
     edition: 13,
-    theme: null,
+    theme: "Overcoming Adversity, Redefining Normalcy",
     online: true,
     note: "Held online during the COVID-19 pandemic.",
   },
