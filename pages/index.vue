@@ -15,12 +15,16 @@
             International Science Youth Forum
           </div>
         </div>
-        <p class="lede">
-          Since {{ firstYear }}, Hwa Chong Institution in Singapore has brought
-          young scientists from across the globe to meet Nobel laureates and
-          eminent scientists, and to learn from the people who have shaped
-          science.
-        </p>
+        <ul class="hero-details">
+          <li>
+            <span class="material-icons-outlined" aria-hidden="true">history_edu</span>
+            Since {{ firstYear }}
+          </li>
+          <li>
+            <span class="material-icons-outlined" aria-hidden="true">location_on</span>
+            Hwa Chong Institution (SG)
+          </li>
+        </ul>
         <div class="hero-actions">
           <a class="plaque" :href="useBase(`${upcoming.year}`)">
             ISYF {{ upcoming.year }} <ArrowIcon />
@@ -32,12 +36,12 @@
       </div>
     </header>
 
-    <p class="record">
-      <b>{{ editions.length }}</b> editions since {{ firstYear }}.
-      <b>{{ nobelLaureates.length }}</b> Nobel laureates.
-      <b>{{ scientists.length }}</b> laureates and eminent scientists in all.
-      <b>120+</b> students and educators each year.
-    </p>
+    <ul class="stats">
+      <li v-for="stat in stats" :key="stat.label">
+        <span class="stat-number">{{ stat.number }}</span>
+        <span class="stat-label">{{ stat.label }}</span>
+      </li>
+    </ul>
 
     <section class="ruled split">
       <div class="split-head">
@@ -200,10 +204,10 @@
 /* ========== HERO ========== */
 .hero {
   --pad: max(1.5rem, calc(50vw - var(--content-width) / 2));
-  /* The title runs about 4.3 of its own sizes wide; the photo starts a
-     letter or so before its longest line ends, so the words cross into it */
-  --title-size: clamp(56px, 7.5vw, 112px);
-  --split: max(calc(var(--pad) + 3.5 * var(--title-size)), 36vw);
+  /* The title is the biggest thing on the page and runs well across the
+     photo, turning white where it crosses */
+  --title-size: clamp(52px, 6.6vw, 128px);
+  --split: 46vw;
 
   position: relative;
   margin: -1rem calc(50% - 50vw) 0;
@@ -249,16 +253,19 @@
 
 .title-stack {
   position: relative;
+  /* Like the original, the title may run past the content column into the photo */
+  margin-right: calc(2rem - var(--pad));
 }
 
 .hero-title {
   margin: 0 0 1.75rem;
-  font-family: var(--font-display);
+  font-family: var(--font-serif);
+  font-weight: 700;
   font-size: var(--title-size);
-  line-height: 0.98;
+  line-height: 1.02;
   letter-spacing: -0.02em;
-  max-width: 11ch;
-  text-wrap: balance;
+  /* Both copies must break lines identically, so no balancing */
+  text-wrap: wrap;
 }
 
 /* The same words over the photograph, clipped to it, in plaster white */
@@ -272,8 +279,33 @@
   pointer-events: none;
 }
 
-#page.heritage .hero .lede {
-  max-width: min(30rem, calc(var(--split) - var(--pad) - 2rem));
+/* "Since 2009 | Hwa Chong Institution (SG)" */
+.hero-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+}
+
+.hero-details li {
+  margin: 0;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.hero-details li + li {
+  border-left: 1px solid var(--ink);
+}
+
+.hero-details .material-icons-outlined {
+  font-size: 20px;
+  --fg: var(--crimson);
 }
 
 .hero-actions {
@@ -310,6 +342,21 @@
 
   .hero-title {
     font-size: clamp(42px, 12vw, 64px);
+    max-width: none;
+  }
+
+  .title-stack {
+    margin-right: 0;
+  }
+
+  .hero-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-details li + li {
+    border-left: none;
+    border-top: 1px solid var(--ink);
   }
 
   .hero-title-over,
@@ -321,27 +368,51 @@
     max-width: none;
   }
 
-  #page.heritage .hero .lede {
-    max-width: none;
-    font-size: 17px;
-  }
 }
 
-/* ========== RECORD ========== */
-.record {
-  max-width: none;
+/* ========== STATS ========== */
+.stats {
+  list-style: none;
+  padding: 0;
+  margin: 3rem 0 3.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+}
+
+.stats li {
   margin: 0;
-  padding-block: 3rem 3.5rem;
-  font-family: var(--font-display);
-  font-size: clamp(26px, 3.1vw, 40px);
-  line-height: 1.3;
-  text-wrap: pretty;
+  padding: 1rem 1rem 0.875rem;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
-.record b {
-  --fg: var(--crimson);
-  font-weight: 400;
+.stat-number {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.1;
   font-variant-numeric: lining-nums;
+  --fg: var(--crimson);
+}
+
+.stat-label {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/* On phones the boxes pair up; an odd last box spans the row */
+@media screen and (max-width: 560px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stats li:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
 }
 
 /* ========== RULED SECTIONS ========== */
@@ -586,6 +657,14 @@ const laureatesByFirstYear = Object.values(
     return groups;
   }, {})
 );
+
+const stats = [
+  { number: firstYear, label: "The first forum" },
+  { number: editions.length, label: "Editions held" },
+  { number: nobelLaureates.length, label: "Nobel laureates invited" },
+  { number: scientists.length, label: "Laureates & eminent scientists" },
+  { number: "120+", label: "Students & educators each year" },
+];
 
 // "Nobel Prize in Physics, 2003" -> "Physics, 2003"
 const field = (honour) => honour.replace("Nobel Prize in ", "");

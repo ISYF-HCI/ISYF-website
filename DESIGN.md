@@ -164,7 +164,7 @@ A restrained plaster-and-ink ground with one bright Hwa Chong red used only as a
 **Character:** A high-contrast engraved Caslon for headings and numerals, set against a soft, open Lexend for reading. The serif carries the record (years, themes, names); the sans carries explanation.
 
 ### Hierarchy
-- **Display** (400, clamp(44px, 6vw, 76px), 1.02): page h1. The home hero goes larger (clamp(56px, 8.2vw, 136px), 0.98, -0.02em) and the 2027 masthead larger still (clamp(64px, 11vw, 150px)).
+- **Display** (400, clamp(44px, 6vw, 76px), 1.02): page h1. The home hero title is the biggest text on the site, in Libre Caslon Text 700 (clamp(52px, 6.6vw, 128px), 1.02, -0.02em), running across the photo from a 46vw split as on the original site, with a ruled "Since 2009 | Hwa Chong Institution (SG)" box beneath it and the 2027 masthead larger still (clamp(64px, 11vw, 150px)).
 - **Headline** (400, clamp(30px, 3.4vw, 44px), 1.1): section h2, balanced wrap. The honour board heading steps up to clamp(36px, 4.4vw, 60px).
 - **Title** (400, 22px, 1.25): h3 for rows and sub-items (20px in the goals grid, 32px for archive entries).
 - **Record numerals** (Caslon Display, 26-44px, lining numerals, Hwa Chong Red): edition years in the themes list, the timeline and the board. Smaller 18px year links use Deep Red.
@@ -250,8 +250,8 @@ Archive Slate field (#21282c), the same dark grey as the archived sites; plaster
 ### Don't:
 - **Don't** use red fields or double gold frames: no red sections, pages, panels or footers, and no gilt borders or offset-outline frames. Large saturated red tires the eye and reads as a warning; red stops meaning anything as an accent once it fills a field; and red with gold frames reads dated.
 - **Don't** put gilt on page content; it is only a nav hover colour on dark grounds.
-- **Don't** use pills, badges, stat boxes, chip clouds, side-stripe cards or shadowed cards.
+- **Don't** use pills, badges, chip clouds, side-stripe cards or shadowed cards. One exception, kept at the teacher's request: the home page's five stat boxes (1px ink border, 2px corners, bold red Caslon numerals), built from `data/` except the confirmed 120+ figure.
 - **Don't** place a small-caps label above a heading as a kicker; meta lines sit beside or after what they describe.
 - **Don't** use icon glyphs or emoji as decoration; the drawn arrow and the social marks are the only icons.
 - **Don't** restyle archived edition sites or let heritage styles leak outside `#page.heritage`.
-- **Don't** add statistics, testimonials or counts that are not in `data/`.
+- **Don't** add statistics, testimonials or counts that are not in `data/` (the confirmed 120+ figure is the only exception).
