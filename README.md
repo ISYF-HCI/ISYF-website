@@ -29,11 +29,14 @@ to reuse/recycle as much of this as possible.
 
 Content shared across pages lives in `data/`:
 
-- `data/editions.js`: every edition's year, number and theme, plus the
+- `data/editions.js`: every edition's year, number and theme, the
+  co-chairpersons of its Student Organising Committee (`chairs`), plus the
   upcoming edition.
 - `data/scientists.js`: laureates and scientists, with the years they were
   invited.
-- `data/site.js`: menus, socials, archived sites and redirects.
+- `data/site.js`: menus, socials, archived sites and redirects, plus the home
+  page's organisers, partners, contact details and photo carousel
+  (`homePhotos`, images in `public/images/home/`).
 
 ### Starting a new edition
 
@@ -47,6 +50,8 @@ When ISYF 2027 is over and 2028 begins:
    `data/scientists.js`.
 4. Create `pages/2028/index.vue` that renders `components/comingSoon.vue`
    with the `masthead` layout.
+5. Add the 2028 co-chairpersons to `upcoming.chairs`, and swap the home page
+   photos in `homePhotos` for ones from the new archived edition.
 
 ## Styling
 

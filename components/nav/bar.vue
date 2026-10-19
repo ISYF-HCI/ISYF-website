@@ -36,6 +36,8 @@
           <span class="item-text">{{ entry.label }}</span>
         </a>
       </template>
+      <!-- Site search on the ISYF-wide pages; archived sites keep their own nav -->
+      <SiteSearch v-if="!archive" />
       <div class="socials">
         <a class="item" :href="socials.instagram.url" target="_blank">
           <InstagramIcon />
@@ -486,6 +488,7 @@ import { ref, computed, onMounted, onUnmounted } from "vue";
 import { gsap } from "gsap";
 import InstagramIcon from "../icons/instagram.vue";
 import YoutubeIcon from "../icons/youtube.vue";
+import SiteSearch from "./search.vue";
 
 // Archived editions keep their own menu; everywhere else uses the main one.
 const archive = useArchive();
@@ -522,7 +525,7 @@ onMounted(() => {
   if (window.innerWidth < 900) {
     return;
   }
-  gsap.from(".stamp, .menu .item, .menu .socials", {
+  gsap.from("nav .stamp, nav .menu .item, nav .menu .socials", {
     opacity: 0,
 
     x: -7,
