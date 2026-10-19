@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Laureates &amp; eminent scientists</h1>
+    <h1>Nobel laureates &amp; eminent scientists</h1>
     <p class="lede">
       Across {{ editions.length }} editions, ISYF has invited {{ count("nobel") }} Nobel
       laureates, {{ count("fields") }} Fields medallists and many other
@@ -290,7 +290,7 @@ import { useBase } from "~/composables/useBase";
 import { editions, firstYear } from "~/data/editions";
 import { categories, scientists, scientistId } from "~/data/scientists";
 
-useHead({ title: "Laureates & Scientists · ISYF" });
+useHead({ title: "Nobel Laureates & Scientists · ISYF" });
 
 const years = editions.map((e) => e.year).reverse();
 const count = (id) => scientists.filter((s) => s.category === id).length;

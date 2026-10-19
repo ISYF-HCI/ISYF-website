@@ -223,7 +223,19 @@ Nearly square. Every corner that exists is 2px: plaque, select, current-year chi
 Plaster bar with a 1px ink underline; Caslon Display wordmark at 26px; Lexend 500 items at 14px, 0.08em tracking. Over photography it becomes translucent ink (rgba(31,26,25,0.35)) with 12px blur and plaster items whose hover is gilt. On plaster, hover and open items turn Deep Red. The mobile menu is an Archive Slate panel (#21282c) whose active and hovered links turn gilt.
 
 ### Honour Board (signature)
-A section on the plaster ground, inside the content column, opened by a 2px Hwa Chong Red rule (2.5rem above, 4rem below). Inside: a heading (clamp(36px, 4.4vw, 60px)) and Soft Ink intro split above a Hairline Stone rule, then Nobel laureates grouped under the year they first joined, flowed through columns with stone column rules. Year numerals are Hwa Chong Red Caslon Display (28px); names are charcoal engraved caps that turn Deep Red on hover, with the prize line in italic Muted Ink. On first scroll into view, year groups settle in once (opacity and 10px rise, 900ms, 60ms stagger per year); reduced motion and no-JS show them immediately. The laureates page does not repeat the board: its Nobel group is an ordinary ledger on plaster like every other group.
+A section on the plaster ground, inside the content column, opened by a 2px Hwa Chong Red rule. Home keeps it short: a heading and intro, a red plaque linking to the full laureates page, and a collapsed "Show Nobel laureates by the year they first joined" toggle (+/− square, ruled top and bottom) that opens the roll in place. In the roll, Nobel laureates are grouped under the year they first joined, flowed through columns with stone column rules: Hwa Chong Red Caslon Display year numerals (28px), charcoal engraved-caps names that turn Deep Red on hover, prize lines in italic Muted Ink. The laureates page does not repeat the board: its Nobel group is an ordinary ledger on plaster like every other group.
+
+### Announcement Banner
+The first thing on the home page: a full-width Archive Slate bar (#21282c) linking to the upcoming edition, with a small Hwa Chong Red "Coming soon" tag, plaster text and an arrow that nudges on hover. On phones it drops the long edition name.
+
+### Photo Reel
+A full-bleed strip of event photos (from `homePhotos` in `data/site.js`, about 440px tall webp files in `public/images/home/`) scrolling slowly left in a seamless loop, 2px corners, 0.75rem gaps. It pauses on hover and keyboard focus; with reduced motion it stops and becomes a scrollable row.
+
+### Organisers and Contact
+Organisers lead with Hwa Chong Institution and the Ministry of Education as two featured entries (white logo tile, name, small-caps role, a sentence), then smaller partner logos in a grid of hairline-ruled cells headed "With the support of". Contact us is a split section with a definition list (small-caps labels, ruled rows) for email, phone, fax, address and socials, anchored at `#contact`.
+
+### Site Search
+A search field in the nav on the ISYF-wide pages only (archived sites keep their own nav). Ink-outlined 2px field with a search icon that widens on focus; results drop down in a plaster panel with an ink border and soft shadow, keyboard navigable. It searches pages, editions, themes, co-chairpersons and every Nobel laureate and scientist, all built from `data/`.
 
 ### Ledger Rows
 The default list: rows ruled by Hairline Stone under an ink top rule, a numeral or name column in Caslon, content in serif text or Lexend, an optional small-caps meta line. Used for themes, laureates (sentence-case 18px Caslon names, Soft Ink honour, Deep Red year links; Red Wash on the targeted row), coming-soon sections and the "while you wait" links (ink-ruled columns whose title turns Deep Red and whose arrow nudges on hover).
@@ -250,7 +262,8 @@ Archive Slate field (#21282c), the same dark grey as the archived sites; plaster
 ### Don't:
 - **Don't** use red fields or double gold frames: no red sections, pages, panels or footers, and no gilt borders or offset-outline frames. Large saturated red tires the eye and reads as a warning; red stops meaning anything as an accent once it fills a field; and red with gold frames reads dated.
 - **Don't** put gilt on page content; it is only a nav hover colour on dark grounds.
-- **Don't** use pills, badges, chip clouds, side-stripe cards or shadowed cards. One exception, kept at the teacher's request: the home page's five stat boxes (1px ink border, 2px corners, bold red Caslon numerals), built from `data/` except the confirmed 120+ figure.
+- **Don't** use "laureates" on its own: always "Nobel laureates", and name Fields medallists and eminent scientists alongside when the count includes them.
+- **Don't** use pills, badges, chip clouds, side-stripe cards or shadowed cards. One exception, kept at the teacher's request: the home page's four stat boxes (1px ink border, 2px corners, bold red Caslon numerals), built from `data/` except the confirmed 120+ figure.
 - **Don't** place a small-caps label above a heading as a kicker; meta lines sit beside or after what they describe.
 - **Don't** use icon glyphs or emoji as decoration; the drawn arrow and the social marks are the only icons.
 - **Don't** restyle archived edition sites or let heritage styles leak outside `#page.heritage`.

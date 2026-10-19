@@ -1,5 +1,8 @@
 // Every ISYF edition held so far, oldest first.
 //
+// `chairs` lists the co-chairpersons of that year's Student Organising
+// Committee. Add them for any year once confirmed.
+//
 // To archive an edition once the next one launches, give it an `archive`
 // path (the folder under pages/ that holds its website) and add its menu to
 // `archives` in data/site.js.
@@ -49,11 +52,13 @@ export const editions = [
     edition: 15,
     theme: "Reconnecting, Reimagining: Looking Ahead to a Better World",
     note: "The forum returned in person, welcoming over 100 delegates to Singapore.",
+    chairs: ["Lee Huan Yu", "Tan Keng How"],
   },
   {
     year: 2024,
     edition: 16,
     theme: "Science and Technology for Humanity: Building a Sustainable Future",
+    chairs: ["Seah Yuheng", "Jacinda Kung Jiexin"],
   },
   { year: 2025, edition: 17, theme: "Innovation Unified: Towards A Better Future" },
   {
@@ -62,6 +67,7 @@ export const editions = [
     theme: "Curiosity Unlocked: How Questions Drive Discovery in the Age of AI",
     dates: "5–9 January 2026",
     archive: "2026",
+    chairs: ["Jolin Lim En Qi", "Kan Wei Sen"],
   },
 ];
 
@@ -69,6 +75,7 @@ export const editions = [
 export const upcoming = {
   year: 2027,
   edition: 19,
+  chairs: ["Fu Cai Gui", "Hong Debo"],
 };
 
 export const firstYear = editions[0].year;

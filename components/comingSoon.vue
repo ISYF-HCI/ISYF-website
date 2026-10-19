@@ -6,6 +6,10 @@
         The {{ ordinal(upcoming.edition) }} International Science Youth Forum,
         marking {{ yearsOfIsyf }} years of ISYF. Coming soon.
       </p>
+      <p v-if="upcoming.chairs?.length" class="masthead-chairs">
+        Co-chairpersons, Student Organising Committee:
+        {{ upcoming.chairs.join(" and ") }}
+      </p>
     </Masthead>
 
     <div>
@@ -57,7 +61,7 @@
           </li>
           <li>
             <a :href="useBase('laureates')">
-              <h3>Laureates &amp; scientists <ArrowIcon /></h3>
+              <h3>Nobel laureates &amp; scientists <ArrowIcon /></h3>
               <p>The Nobel laureates and eminent scientists ISYF has welcomed.</p>
             </a>
           </li>
@@ -94,6 +98,14 @@
 </template>
 
 <style scoped>
+.masthead-chairs {
+  margin: 1.25rem auto 0;
+  max-width: 40ch;
+  font-size: 15px;
+  --fg: var(--plaster);
+  opacity: 0.85;
+}
+
 .masthead-lede {
   max-width: 34ch;
   margin: 0 auto;

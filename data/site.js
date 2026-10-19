@@ -8,6 +8,65 @@ export const socials = {
   email: "reach_isyf@hci.edu.sg",
 };
 
+// Contact details shown on the home page
+export const contact = {
+  email: "reach_isyf@hci.edu.sg",
+  phone: "+65 6468 3955",
+  fax: "+65 6769 5857",
+  address: "661 Bukit Timah Road, Singapore 269734",
+};
+
+// The two organisers, featured on the home page
+export const organisers = [
+  {
+    name: "Hwa Chong Institution",
+    role: "Host and organiser",
+    text: "ISYF is hosted and organised by Hwa Chong Institution's Students' Science Research Club (SSRC), whose students have run the forum since the first edition in 2009.",
+    href: "https://www.hci.edu.sg",
+    image: "hc_logo.png",
+  },
+  {
+    name: "Ministry of Education, Singapore",
+    role: "Co-organiser",
+    text: "The Ministry of Education (MOE) co-organises ISYF and supports the forum each year.",
+    href: "https://www.moe.gov.sg",
+    image: "moe_logo.png",
+  },
+];
+
+// Partners and supporters, shown smaller beneath the organisers
+export const partners = [
+  { name: "National Research Foundation", href: "https://www.nrf.gov.sg", image: "nrf_logo.png" },
+  { name: "Global Young Scientists Summit", href: "https://gyss.nrf.gov.sg", image: "gyss_logo.png" },
+  { name: "NTU Institute of Advanced Studies", href: "https://www.ntu.edu.sg/ias", image: "ntuias_logo.png" },
+  { name: "National University of Singapore", href: "https://nus.edu.sg", image: "nus_logo.png" },
+  { name: "Singapore University of Technology and Design", href: "https://sutd.edu.sg", image: "sutd_logo.png" },
+  { name: "Singapore Institute of Technology", href: "https://www.singaporetech.edu.sg/", image: "sit_logo.png" },
+  { name: "A*STAR", href: "https://a-star.edu.sg", image: "astar_logo.png" },
+  { name: "Science Centre Singapore", href: "https://www.science.edu.sg", image: "scs_logo.png" },
+];
+
+// Photos in the home page carousel, from public/images/home/.
+// Keep each about 440px tall (webp) so the home page stays light.
+export const homePhotos = {
+  edition: 2026,
+  photos: [
+    { file: "isyf-2026-01.webp", alt: "Delegates arriving at Changi Airport with ISYF welcome signs" },
+    { file: "isyf-2026-02.webp", alt: "Delegates and student facilitators seated outdoors at Hwa Chong" },
+    { file: "isyf-2026-03.webp", alt: "A speaker answering questions from delegates" },
+    { file: "isyf-2026-04.webp", alt: "A delegate in discussion with a speaker" },
+    { file: "isyf-2026-05.webp", alt: "A speaker talking with delegates" },
+    { file: "isyf-2026-06.webp", alt: "Delegates working in a laboratory" },
+    { file: "isyf-2026-07.webp", alt: "Delegates seated in a lecture theatre" },
+    { file: "isyf-2026-08.webp", alt: "Delegates watching a demonstration with fire" },
+    { file: "isyf-2026-09.webp", alt: "A delegate presenting a gift to a speaker" },
+    { file: "isyf-2026-10.webp", alt: "A delegate presenting research to a room" },
+    { file: "isyf-2026-11.webp", alt: "A speaker on stage in the Hwa Chong auditorium" },
+    { file: "isyf-2026-12.webp", alt: "Panel on stage under the ISYF 2026 theme, Curiosity Unlocked" },
+    { file: "isyf-2026-13.webp", alt: "Delegates on stage receiving recognition" },
+  ],
+};
+
 // Sections of the upcoming edition's site. Until a page exists at
 // pages/<year>/<slug>.vue, visiting it redirects to the coming-soon page
 // (middleware/redirects.global.js), so add pages here as they go live.
@@ -53,7 +112,7 @@ export const mainMenu = [
     label: "History",
     children: [
       { label: "Editions & Themes", href: "history", icon: "history_edu" },
-      { label: "Laureates & Scientists", href: "laureates", icon: "workspace_premium" },
+      { label: "Nobel Laureates & Scientists", href: "laureates", icon: "workspace_premium" },
     ],
   },
   {

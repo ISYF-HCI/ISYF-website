@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+    <a class="announce" :href="useBase(`${upcoming.year}`)">
+      <span class="announce-tag">Coming soon</span>
+      <span>ISYF {{ upcoming.year }}<span class="announce-long">, the {{ ordinal(upcoming.edition) }} International Science Youth Forum</span></span>
+      <ArrowIcon />
+    </a>
     <header class="hero">
       <img
         class="hero-photo"
@@ -45,23 +50,6 @@
 
     <section class="ruled split">
       <div class="split-head">
-        <h2>ISYF {{ upcoming.year }}</h2>
-        <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
-      </div>
-      <div>
-        <p>
-          The {{ ordinal(upcoming.edition) }} International Science Youth Forum
-          is on its way. Dates, theme, programme and speakers will be announced
-          here soon.
-        </p>
-        <a class="text-link" :href="useBase(`${upcoming.year}`)">
-          Follow ISYF {{ upcoming.year }} <ArrowIcon />
-        </a>
-      </div>
-    </section>
-
-    <section class="ruled split">
-      <div class="split-head">
         <h2>What is ISYF?</h2>
       </div>
       <div>
@@ -75,7 +63,7 @@
         <p>
           Each forum brings delegates face to face with Nobel laureates and
           eminent scientists through lectures, Masterclasses and dialogues, with
-          laureates joining in conjunction with the Global Young Scientists
+          Nobel laureates joining in conjunction with the Global Young Scientists
           Summit. Alongside research exchanges, poster presentations and cultural
           activities, delegates explore Singapore and build friendships that last
           well beyond the forum.
@@ -89,24 +77,46 @@
       </div>
     </section>
 
+    <section class="photos" aria-labelledby="photos-title">
+      <div class="photos-head">
+        <h2 id="photos-title">ISYF {{ homePhotos.edition }} in pictures</h2>
+        <a class="text-link" :href="useBase(`${homePhotos.edition}/photos`)">
+          More photos <ArrowIcon />
+        </a>
+      </div>
+      <div class="reel" tabindex="0" aria-label="Photos from ISYF 2026, scrolling">
+        <ul class="reel-track">
+          <li v-for="(photo, i) in reelPhotos" :key="i" :aria-hidden="i >= homePhotos.photos.length">
+            <img
+              :src="useBase(`images/home/${photo.file}`)"
+              :alt="i < homePhotos.photos.length ? photo.alt : ''"
+              loading="lazy"
+              height="440"
+            />
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="board">
-      <div>
-        <div class="board-head">
-          <h2>Nobel laureates at ISYF</h2>
-          <p>
-            From physics to physiology, ISYF has invited
-            {{ nobelLaureates.length }} Nobel laureates to share their journeys
-            with delegates, alongside Fields medallists, Turing Award winners and
-            many other eminent scientists. Listed by the year they first joined us.
-          </p>
-        </div>
+      <div class="board-head">
+        <h2>Nobel laureates &amp; eminent scientists</h2>
+        <p>
+          From physics to physiology, ISYF has invited
+          {{ nobelLaureates.length }} Nobel laureates,
+          {{ countOf("fields") }} Fields medallists and many other eminent
+          scientists to share their journeys with delegates.
+        </p>
+      </div>
+      <div class="board-actions">
+        <a class="plaque" :href="useBase('laureates')">
+          See all {{ scientists.length }} Nobel laureates &amp; scientists <ArrowIcon />
+        </a>
+      </div>
+      <details class="roll-toggle">
+        <summary>Show Nobel laureates by the year they first joined</summary>
         <ol class="roll">
-          <li
-            v-for="(group, i) in laureatesByFirstYear"
-            :key="group.year"
-            class="roll-year"
-            :style="{ '--i': i }"
-          >
+          <li v-for="group in laureatesByFirstYear" :key="group.year" class="roll-year">
             <span class="roll-numeral">{{ group.year }}</span>
             <ul>
               <li v-for="laureate in group.people" :key="laureate.name">
@@ -118,10 +128,7 @@
             </ul>
           </li>
         </ol>
-        <a class="text-link" :href="useBase('laureates')">
-          Meet all {{ scientists.length }} laureates and scientists <ArrowIcon />
-        </a>
-      </div>
+      </details>
     </section>
 
     <section class="ruled">
@@ -129,18 +136,11 @@
         <h2>Themes through the years</h2>
         <p>
           Every edition is anchored by a theme that frames its lectures,
-          dialogues and activities.
+          dialogues and activities. The most recent:
         </p>
       </div>
       <ol class="themes">
-        <li class="theme upcoming-theme">
-          <a class="theme-year" :href="useBase(`${upcoming.year}`)">{{ upcoming.year }}</a>
-          <div>
-            <span class="theme-name missing">To be announced</span>
-            <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
-          </div>
-        </li>
-        <li class="theme" v-for="edition in editionsNewestFirst" :key="edition.year">
+        <li class="theme" v-for="edition in recentEditions" :key="edition.year">
           <a class="theme-year" :href="useBase(`history#y${edition.year}`)">{{ edition.year }}</a>
           <div>
             <span class="theme-name" :class="{ missing: !edition.theme }">
@@ -152,43 +152,71 @@
           </div>
         </li>
       </ol>
-      <a class="text-link" :href="useBase('history')">
-        Explore every edition <ArrowIcon />
-      </a>
-    </section>
-
-    <section class="ruled split">
-      <div class="split-head">
-        <h2>From the archive</h2>
-      </div>
-      <div>
-        <article class="archive-entry" v-for="edition in archivedEditions" :key="edition.year">
-          <h3>ISYF {{ edition.year }}</h3>
-          <span class="meta">{{ ordinal(edition.edition) }} edition · {{ edition.dates }}</span>
-          <p class="archive-theme">“{{ edition.theme }}”</p>
-          <ul class="link-row">
-            <li v-for="link in archives[edition.year].highlights" :key="link.href">
-              <a :href="useBase(link.href)">{{ link.label }}</a>
-            </li>
-          </ul>
-        </article>
-        <p class="archive-note">
-          Themes and speakers from every earlier edition are recorded in our
-          <a :href="useBase('history')">history of ISYF</a>.
-        </p>
+      <div class="section-actions">
+        <a class="plaque" :href="useBase('history')">
+          All {{ editions.length }} editions since {{ firstYear }} <ArrowIcon />
+        </a>
+        <a
+          v-for="edition in archivedEditions"
+          :key="edition.year"
+          class="text-link"
+          :href="useBase(`${edition.year}`)"
+        >
+          ISYF {{ edition.year }} website archive <ArrowIcon />
+        </a>
       </div>
     </section>
 
     <section class="ruled">
       <div class="section-head">
-        <h2>Who are the organisers?</h2>
-        <p>
-          ISYF is hosted and organised by Hwa Chong Institution’s very own
-          Students' Science Research Club (SSRC), with the support of the
-          Ministry of Education (MOE) and partners.
-        </p>
+        <h2>Organisers</h2>
       </div>
-      <Supporters />
+      <ul class="organisers">
+        <li v-for="org in organisers" :key="org.name">
+          <a class="org-logo" :href="org.href" target="_blank" rel="noopener">
+            <img :src="useBase(`images/logos/${org.image}`)" :alt="org.name" />
+          </a>
+          <div>
+            <h3>{{ org.name }}</h3>
+            <span class="meta">{{ org.role }}</span>
+            <p>{{ org.text }}</p>
+          </div>
+        </li>
+      </ul>
+      <h3 class="partners-title">With the support of</h3>
+      <ul class="partners">
+        <li v-for="partner in partners" :key="partner.name">
+          <a :href="partner.href" target="_blank" rel="noopener" :title="partner.name">
+            <img :src="useBase(`images/logos/${partner.image}`)" :alt="partner.name" loading="lazy" />
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="ruled split" id="contact">
+      <div class="split-head">
+        <h2>Contact us</h2>
+      </div>
+      <div>
+        <p>
+          For enquiries about ISYF, write to us or call the ISYF office at Hwa
+          Chong Institution.
+        </p>
+        <dl class="contact">
+          <dt>Email</dt>
+          <dd><a :href="`mailto:${contact.email}`">{{ contact.email }}</a></dd>
+          <dt>Phone</dt>
+          <dd><a :href="`tel:${contact.phone.replace(/\s/g, '')}`">{{ contact.phone }}</a></dd>
+          <dt>Fax</dt>
+          <dd>{{ contact.fax }}</dd>
+          <dt>Address</dt>
+          <dd>{{ contact.address }}</dd>
+          <dt>Instagram</dt>
+          <dd><a :href="socials.instagram.url" target="_blank" rel="noopener">{{ socials.instagram.handle }}</a></dd>
+          <dt>YouTube</dt>
+          <dd><a :href="socials.youtube.url" target="_blank" rel="noopener">{{ socials.youtube.handle }}</a></dd>
+        </dl>
+      </div>
     </section>
   </div>
 </template>
@@ -473,8 +501,6 @@
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
   gap: 1rem 3rem;
   align-items: end;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--rule);
 }
 
 .board-head h2 {
@@ -487,10 +513,60 @@
   --fg: var(--ink-soft);
 }
 
+.board-actions,
+.section-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.75rem;
+  margin-top: 2rem;
+}
+
+/* "Show Nobel laureates by year" opens the full roll in place */
+.roll-toggle {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.roll-toggle summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 52px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.roll-toggle summary::-webkit-details-marker {
+  display: none;
+}
+
+.roll-toggle summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  font-family: var(--font);
+  line-height: 1;
+}
+
+.roll-toggle[open] summary::before {
+  content: "−";
+}
+
+.roll-toggle summary:hover {
+  --fg: var(--crimson-deep);
+}
+
 .roll {
   list-style: none;
   padding: 0;
-  margin: 2rem 0 1.5rem;
+  margin: 1rem 0 1.5rem;
   columns: 3 15rem;
   column-gap: 3rem;
   column-rule: 1px solid var(--rule);
@@ -499,19 +575,6 @@
 .roll-year {
   break-inside: avoid;
   margin: 0 0 1.75rem;
-  transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Stagger each year a little after the one before it */
-.roll-year:nth-child(n) {
-  transition-delay: calc(var(--i, 0) * 60ms);
-}
-
-.roll.waiting .roll-year {
-  opacity: 0.2;
-  transform: translateY(10px);
-  transition: none;
 }
 
 .roll-numeral {
@@ -615,39 +678,287 @@
   --fg: var(--ink-mute);
 }
 
-/* ========== ARCHIVE ========== */
-.archive-entry h3 {
-  font-size: 32px;
+/* ========== ANNOUNCEMENT BANNER ========== */
+.announce {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem 0.875rem;
+  margin: -1rem calc(50% - 50vw) 0;
+  padding: 0.75rem 1.5rem;
+  min-height: 48px;
+  box-sizing: border-box;
+  background-color: #21282c;
+  --fg: var(--plaster);
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+}
+
+#page.heritage .announce:hover {
+  --fg: var(--plaster);
+  color: var(--plaster);
+}
+
+.announce:hover .arrow {
+  transform: translateX(4px);
+}
+
+.announce .arrow {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.announce-tag {
+  padding: 0.125rem 0.5rem;
+  border-radius: 2px;
+  background-color: var(--crimson);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 560px) {
+  .announce-long {
+    display: none;
+  }
+}
+
+/* The banner takes the top gap the hero used to fill */
+.announce + .hero {
+  margin-top: 0;
+}
+
+/* ========== PHOTO CAROUSEL ========== */
+.photos {
+  padding-block: 2.5rem 4rem;
+  border-top: 1px solid var(--ink);
+}
+
+.photos-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.photos-head h2 {
   margin: 0;
 }
 
-.archive-theme {
-  margin-block: 0.75rem 1rem;
-  font-family: var(--font-serif);
-  font-size: 19px;
+.reel {
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
 }
 
-.archive-note {
+.reel:focus-visible {
+  outline-offset: -3px;
+}
+
+.reel-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 0.75rem;
+  width: max-content;
+  animation: reel 90s linear infinite;
+}
+
+.reel:hover .reel-track,
+.reel:focus-within .reel-track {
+  animation-play-state: paused;
+}
+
+.reel-track li {
+  margin: 0;
+}
+
+.reel-track img {
+  display: block;
+  height: clamp(200px, 28vw, 340px);
+  width: auto;
+  border-radius: 2px;
+}
+
+/* The track holds the photos twice, so sliding by half loops seamlessly */
+@keyframes reel {
+  to {
+    transform: translateX(calc(-50% - 0.375rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reel {
+    overflow-x: auto;
+  }
+
+  .reel-track {
+    animation: none;
+  }
+}
+
+/* ========== ORGANISERS ========== */
+.organisers {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 26rem), 1fr));
+  gap: 2rem 3rem;
+}
+
+.organisers li {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.org-logo {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background-color: #ffffff;
+}
+
+.org-logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.organisers h3 {
+  margin: 0;
+}
+
+.organisers .meta {
+  margin-top: 0.25rem;
+}
+
+.organisers p {
+  margin: 0.5rem 0 0;
   font-size: 15px;
+  line-height: 1.55;
   --fg: var(--ink-soft);
+}
+
+.partners-title {
+  margin: 3rem 0 1rem;
+  font-family: var(--font-serif);
+  font-size: 15px;
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  --fg: var(--ink-mute);
+}
+
+.partners {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+
+.partners li {
+  margin: 0;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+
+.partners a {
+  display: grid;
+  place-items: center;
+  height: 6rem;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: background-color 200ms;
+}
+
+.partners a:hover {
+  background-color: #ffffff;
+}
+
+.partners img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 560px) {
+  .organisers li {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+  }
+
+  .partners {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ========== CONTACT ========== */
+#contact {
+  scroll-margin-top: 4rem;
+}
+
+.contact {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  margin: 1.5rem 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.contact dt,
+.contact dd {
+  margin: 0;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.contact dt {
+  font-family: var(--font-serif);
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  --fg: var(--ink-mute);
+}
+
+.contact dd {
+  overflow-wrap: anywhere;
 }
 </style>
 
 <script setup>
-import { onMounted } from "vue";
 import { useBase } from "~/composables/useBase";
-import Supporters from "~/components/supporters.vue";
 import ArrowIcon from "~/components/icons/arrow.vue";
 import { editions, upcoming, firstYear, ordinal } from "~/data/editions";
 import { scientists, scientistId } from "~/data/scientists";
-import { archives, goals } from "~/data/site";
+import {
+  goals,
+  homePhotos,
+  organisers,
+  partners,
+  contact,
+  socials,
+} from "~/data/site";
 
 const editionsNewestFirst = [...editions].reverse();
 const archivedEditions = editionsNewestFirst.filter((e) => e.archive);
+const recentEditions = editionsNewestFirst.slice(0, 4);
 
 const nobelLaureates = scientists
   .filter((s) => s.category === "nobel")
   .sort((a, b) => a.years[0] - b.years[0]);
+const countOf = (category) => scientists.filter((s) => s.category === category).length;
 
 // Nobel laureates grouped under the year they first joined ISYF
 const laureatesByFirstYear = Object.values(
@@ -661,31 +972,14 @@ const laureatesByFirstYear = Object.values(
 const stats = [
   { number: firstYear, label: "The first forum" },
   { number: editions.length, label: "Editions held" },
-  { number: nobelLaureates.length, label: "Nobel laureates invited" },
-  { number: scientists.length, label: "Laureates & eminent scientists" },
+  { number: scientists.length, label: "Nobel laureates, Fields medallists & eminent scientists invited" },
   { number: "120+", label: "Students & educators each year" },
 ];
 
+// The carousel loops by showing the photos twice; the copy is hidden from
+// screen readers
+const reelPhotos = [...homePhotos.photos, ...homePhotos.photos];
+
 // "Nobel Prize in Physics, 2003" -> "Physics, 2003"
 const field = (honour) => honour.replace("Nobel Prize in ", "");
-
-// The laureate roll's one moment: names settle in, year by year, the first
-// time the board scrolls into view. Without JS the names are simply shown.
-onMounted(() => {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const roll = document.querySelector(".roll");
-  if (!roll || !("IntersectionObserver" in window)) return;
-  if (roll.getBoundingClientRect().top < window.innerHeight) return;
-
-  roll.classList.add("waiting");
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!entry.isIntersecting) return;
-      roll.classList.remove("waiting");
-      observer.disconnect();
-    },
-    { rootMargin: "0px 0px -15% 0px" }
-  );
-  observer.observe(roll);
-});
 </script>

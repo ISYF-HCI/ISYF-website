@@ -4,8 +4,8 @@
     <p class="lede">
       From the first forum in {{ firstYear }} to the
       {{ ordinal(upcoming.edition) }} edition in {{ upcoming.year }}, every ISYF
-      has gathered young scientists around a theme, and around the laureates
-      and scientists who came to share their journeys. Here is how the story
+      has gathered young scientists around a theme, and around the Nobel
+      laureates and eminent scientists who came to share their journeys. Here is how the story
       has unfolded.
     </p>
 
@@ -32,7 +32,11 @@
             <template v-if="edition.dates">{{ edition.dates }}. </template>{{ edition.note }}
           </p>
 
-          <dl v-if="guestGroups(edition.year).length" class="guests">
+          <dl v-if="guestGroups(edition.year).length || edition.chairs" class="guests">
+            <template v-if="edition.chairs">
+              <dt>Co-chairpersons</dt>
+              <dd>{{ edition.chairs.join(" and ") }}</dd>
+            </template>
             <template v-for="group in guestGroups(edition.year)" :key="group.id">
               <dt>{{ group.label }}</dt>
               <dd>
@@ -58,6 +62,10 @@
         </div>
         <div class="entry-body">
           <p class="entry-theme missing">Coming soon. Theme to be announced</p>
+          <dl v-if="upcoming.chairs?.length" class="guests">
+            <dt>Co-chairpersons</dt>
+            <dd>{{ upcoming.chairs.join(" and ") }}</dd>
+          </dl>
           <a class="text-link" :href="useBase(`${upcoming.year}`)">
             Follow ISYF {{ upcoming.year }} <ArrowIcon />
           </a>
