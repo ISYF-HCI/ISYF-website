@@ -168,7 +168,7 @@ input:focus {
 <script setup>
 import { ref, computed, watch } from "vue";
 import { useBase } from "~/composables/useBase";
-import { editions, upcoming } from "~/data/editions";
+import { editions, upcoming, chairName } from "~/data/editions";
 import { scientists, scientistId } from "~/data/scientists";
 
 // Everything the search can find. Built from data/, so new editions and
@@ -176,14 +176,14 @@ import { scientists, scientistId } from "~/data/scientists";
 const index = [
   { title: "Home", kind: "Page", href: "" },
   { title: "Contact us", kind: "Email, phone and address", href: "#contact" },
-  { title: `ISYF ${upcoming.year}`, kind: "Coming soon", href: `${upcoming.year}`, extra: (upcoming.chairs ?? []).join(" ") },
+  { title: `ISYF ${upcoming.year}`, kind: "Coming soon", href: `${upcoming.year}`, extra: (upcoming.chairs ?? []).map(chairName).join(" ") },
   { title: "Editions & themes", kind: "Every ISYF since 2009", href: "history" },
   { title: "Nobel laureates & eminent scientists", kind: "Everyone ISYF has invited", href: "laureates" },
   ...editions.map((e) => ({
     title: `ISYF ${e.year}${e.theme ? ` · ${e.theme}` : ""}`,
     kind: e.archive ? "Edition · website archived" : "Edition",
     href: `history#y${e.year}`,
-    extra: [e.note, ...(e.chairs ?? [])].join(" "),
+    extra: [e.note, ...(e.chairs ?? []).map(chairName)].join(" "),
   })),
   ...editions
     .filter((e) => e.archive)
