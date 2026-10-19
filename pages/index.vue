@@ -184,10 +184,15 @@
         </li>
       </ul>
       <h3 class="partners-title">With the support of</h3>
-      <ul class="partners">
+      <ul class="partners" :style="{ '--cols': Math.ceil(partners.length / 2) }">
         <li v-for="partner in partners" :key="partner.name">
           <a :href="partner.href" target="_blank" rel="noopener" :title="partner.name">
-            <img :src="useBase(`images/logos/${partner.image}`)" :alt="partner.name" loading="lazy" />
+            <img
+              :src="useBase(`images/logos/${partner.image}`)"
+              :alt="partner.name"
+              :style="partner.scale ? { scale: partner.scale } : null"
+              loading="lazy"
+            />
           </a>
         </li>
       </ul>
@@ -865,7 +870,8 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  /* Two even rows on wider screens: half the logos in each */
+  grid-template-columns: repeat(var(--cols, 4), minmax(0, 1fr));
   border-top: 1px solid var(--rule);
   border-left: 1px solid var(--rule);
 }
@@ -879,7 +885,7 @@
 .partners a {
   display: grid;
   place-items: center;
-  height: 6rem;
+  height: 7rem;
   padding: 1rem;
   box-sizing: border-box;
   transition: background-color 200ms;
@@ -890,8 +896,11 @@
 }
 
 .partners img {
-  max-width: 100%;
-  max-height: 100%;
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(100%, 11rem);
+  max-height: 4.5rem;
   object-fit: contain;
 }
 

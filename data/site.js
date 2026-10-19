@@ -34,15 +34,16 @@ export const organisers = [
   },
 ];
 
-// Partners and supporters, shown smaller beneath the organisers
+// Partners and supporters, shown smaller beneath the organisers.
+// `scale` evens out logos whose image files carry more or less empty space.
 export const partners = [
-  { name: "National Research Foundation", href: "https://www.nrf.gov.sg", image: "nrf_logo.png" },
+  { name: "National Research Foundation", href: "https://www.nrf.gov.sg", image: "nrf_logo.png", scale: 1.7 },
   { name: "Global Young Scientists Summit", href: "https://gyss.nrf.gov.sg", image: "gyss_logo.png" },
-  { name: "NTU Institute of Advanced Studies", href: "https://www.ntu.edu.sg/ias", image: "ntuias_logo.png" },
+  { name: "NTU Institute of Advanced Studies", href: "https://www.ntu.edu.sg/ias", image: "ntuias_logo.png", scale: 1.15 },
   { name: "National University of Singapore", href: "https://nus.edu.sg", image: "nus_logo.png" },
   { name: "Singapore University of Technology and Design", href: "https://sutd.edu.sg", image: "sutd_logo.png" },
-  { name: "Singapore Institute of Technology", href: "https://www.singaporetech.edu.sg/", image: "sit_logo.png" },
-  { name: "A*STAR", href: "https://a-star.edu.sg", image: "astar_logo.png" },
+  { name: "Singapore Institute of Technology", href: "https://www.singaporetech.edu.sg/", image: "sit_logo.png", scale: 0.8 },
+  { name: "A*STAR", href: "https://a-star.edu.sg", image: "astar_logo.png", scale: 1.35 },
   { name: "Science Centre Singapore", href: "https://www.science.edu.sg", image: "scs_logo.png" },
 ];
 
