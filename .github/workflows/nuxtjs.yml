@@ -2,7 +2,10 @@ name: Deploy Nuxt 3 site to Pages
 
 on:
   push:
-    branches: ["main"] # Change to "master" if your default branch is master
+    branches: ["main"]
+  # Lets the preview at /version2/ be refreshed after its branch changes:
+  # Actions > Deploy Nuxt 3 site to Pages > Run workflow
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,6 +15,10 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
+
+env:
+  # Branch shown at /ISYF-website/version2/. Clear it to stop the preview.
+  PREVIEW_BRANCH: claude/cool-cerf-f6o7ae
 
 jobs:
   build:
@@ -33,6 +40,29 @@ jobs:
         run: npx nuxi generate
         env:
           NUXT_APP_BASE_URL: /ISYF-website/
+
+      - name: Checkout preview branch
+        if: env.PREVIEW_BRANCH != ''
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.PREVIEW_BRANCH }}
+          path: preview
+
+      - name: Generate preview at /version2/
+        if: env.PREVIEW_BRANCH != ''
+        working-directory: preview
+        run: |
+          npm ci
+          npx nuxi generate
+          cp -r .output/public ../.output/public/version2
+          # GitHub Pages sites must stay under 1 GB, so the preview skips the
+          # large photo and infographic folders. Only the 2026 archive uses
+          # them, and it is the same as on the live site.
+          rm -rf "../.output/public/version2/event_images" \
+                 "../.output/public/version2/Infographic Creation Gallery"
+          du -sh ../.output/public
+        env:
+          NUXT_APP_BASE_URL: /ISYF-website/version2/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
