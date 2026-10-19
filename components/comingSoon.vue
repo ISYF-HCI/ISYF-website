@@ -8,7 +8,7 @@
       </p>
       <p v-if="upcoming.chairs?.length" class="masthead-chairs">
         Co-chairpersons, Student Organising Committee:
-        {{ upcoming.chairs.join(" and ") }}
+        <ChairNames :chairs="upcoming.chairs" />
       </p>
     </Masthead>
 
@@ -242,6 +242,7 @@ import { upcomingSections, archivePages, socials } from "~/data/site";
 import InstagramIcon from "~/components/icons/instagram.vue";
 import YoutubeIcon from "~/components/icons/youtube.vue";
 import ArrowIcon from "~/components/icons/arrow.vue";
+import ChairNames from "~/components/chairNames.vue";
 
 useHead({ title: `ISYF ${upcoming.year} · Coming Soon` });
 

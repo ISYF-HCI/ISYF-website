@@ -35,7 +35,7 @@
           <dl v-if="guestGroups(edition.year).length || edition.chairs" class="guests">
             <template v-if="edition.chairs">
               <dt>Co-chairpersons</dt>
-              <dd>{{ edition.chairs.join(" and ") }}</dd>
+              <dd><ChairNames :chairs="edition.chairs" /></dd>
             </template>
             <template v-for="group in guestGroups(edition.year)" :key="group.id">
               <dt>{{ group.label }}</dt>
@@ -64,7 +64,7 @@
           <p class="entry-theme missing">Coming soon. Theme to be announced</p>
           <dl v-if="upcoming.chairs?.length" class="guests">
             <dt>Co-chairpersons</dt>
-            <dd>{{ upcoming.chairs.join(" and ") }}</dd>
+            <dd><ChairNames :chairs="upcoming.chairs" /></dd>
           </dl>
           <a class="text-link" :href="useBase(`${upcoming.year}`)">
             Follow ISYF {{ upcoming.year }} <ArrowIcon />
@@ -307,6 +307,7 @@ h1 {
 <script setup>
 import { useBase } from "~/composables/useBase";
 import ArrowIcon from "~/components/icons/arrow.vue";
+import ChairNames from "~/components/chairNames.vue";
 import { editions, upcoming, firstYear, ordinal } from "~/data/editions";
 import { categories, scientistsInYear, scientistId } from "~/data/scientists";
 import { archives, socials } from "~/data/site";
