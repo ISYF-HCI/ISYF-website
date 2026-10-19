@@ -692,7 +692,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.25rem 0.875rem;
-  margin: -1rem calc(50% - 50vw) 0;
+  /* Starts just below the fixed nav and its 1px rule */
+  margin: 1px calc(50% - 50vw) 0;
   padding: 0.75rem 1.5rem;
   min-height: 48px;
   box-sizing: border-box;
