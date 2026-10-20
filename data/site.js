@@ -8,11 +8,12 @@ export const socials = {
   email: "reach_isyf@hci.edu.sg",
 };
 
-// Contact details shown on the home page
+// Contact details shown on the home page and the main site's footer.
+// No phone or fax: Hwa Chong's general office can't answer ISYF questions.
 export const contact = {
-  email: "reach_isyf@hci.edu.sg",
-  phone: "+65 6468 3955",
-  fax: "+65 6769 5857",
+  email: "isyf@hci.edu.sg",
+  // Goes to the student organising committee
+  studentEmail: "reach_isyf@hci.edu.sg",
   address: "661 Bukit Timah Road, Singapore 269734",
 };
 
