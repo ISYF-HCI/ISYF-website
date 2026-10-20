@@ -204,16 +204,14 @@
       </div>
       <div>
         <p>
-          For enquiries about ISYF, write to us or call the ISYF office at Hwa
-          Chong Institution.
+          For enquiries about ISYF, email us. To reach the student organisers
+          directly, use their address below.
         </p>
         <dl class="contact">
           <dt>Email</dt>
           <dd><a :href="`mailto:${contact.email}`">{{ contact.email }}</a></dd>
-          <dt>Phone</dt>
-          <dd><a :href="`tel:${contact.phone.replace(/\s/g, '')}`">{{ contact.phone }}</a></dd>
-          <dt>Fax</dt>
-          <dd>{{ contact.fax }}</dd>
+          <dt>Student organisers</dt>
+          <dd><a :href="`mailto:${contact.studentEmail}`">{{ contact.studentEmail }}</a></dd>
           <dt>Address</dt>
           <dd>{{ contact.address }}</dd>
           <dt>Instagram</dt>
@@ -922,7 +920,7 @@
 
 .contact {
   display: grid;
-  grid-template-columns: 7rem minmax(0, 1fr);
+  grid-template-columns: 11rem minmax(0, 1fr);
   margin: 1.5rem 0 0;
   border-top: 1px solid var(--rule);
 }
@@ -944,6 +942,22 @@
 
 .contact dd {
   overflow-wrap: anywhere;
+}
+
+/* On phones each label sits above its value */
+@media screen and (max-width: 560px) {
+  .contact {
+    grid-template-columns: 1fr;
+  }
+
+  .contact dt {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .contact dd {
+    padding-top: 0.125rem;
+  }
 }
 </style>
 

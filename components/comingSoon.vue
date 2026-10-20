@@ -78,7 +78,9 @@
         <h2>Stay updated</h2>
         <p>
           Announcements will be shared here and on our socials. For enquiries,
-          write to us at <a :href="`mailto:${socials.email}`">{{ socials.email }}</a>.
+          write to us at <a :href="`mailto:${contact.email}`">{{ contact.email }}</a>,
+          or reach the student organisers at
+          <a :href="`mailto:${socials.email}`">{{ socials.email }}</a>.
         </p>
         <ul class="link-row socials">
           <li>
@@ -238,7 +240,7 @@
 import { computed } from "vue";
 import { useBase } from "~/composables/useBase";
 import { editions, upcoming, firstYear, ordinal } from "~/data/editions";
-import { upcomingSections, archivePages, socials } from "~/data/site";
+import { upcomingSections, archivePages, socials, contact } from "~/data/site";
 import InstagramIcon from "~/components/icons/instagram.vue";
 import YoutubeIcon from "~/components/icons/youtube.vue";
 import ArrowIcon from "~/components/icons/arrow.vue";

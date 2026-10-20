@@ -57,19 +57,27 @@
         <section>
           <h2 class="header">Contact Us!</h2>
           <div class="contact-list">
-            <div class="contact">
+            <!-- Main site: ISYF email plus the student organisers' address -->
+            <div v-if="!archive" class="contact">
               <span class="material-icons-outlined">mail</span>
-              <a :href="`mailto:${socials.email}`" target="_blank"
-                ><span class="full-social">{{ socials.email }}</span></a
+              <a :href="`mailto:${contact.email}`" target="_blank"
+                ><span class="full-social">{{ contact.email }}</span></a
               >
             </div>
             <div class="contact">
+              <span class="material-icons-outlined">mail</span>
+              <a :href="`mailto:${socials.email}`" target="_blank"
+                ><span class="full-social">{{ socials.email }}<template v-if="!archive"> (student organisers)</template></span></a
+              >
+            </div>
+            <!-- Archived sites keep the phone and fax they launched with -->
+            <div v-if="archive" class="contact">
               <span class="material-icons-outlined">call</span>
               <a href="tel:+6564683955" target="_blank"
                 ><span class="full-social">+65 6468 3955</span></a
               >
             </div>
-            <div class="contact">
+            <div v-if="archive" class="contact">
               <span class="material-icons-outlined">fax</span>
               <a href="fax:+6567695857" target="_blank"
                 ><span class="full-social">+65 6769 5857</span></a
@@ -245,7 +253,7 @@ p {
 <script setup>
 import { useBase } from '~/composables/useBase';
 import { firstYear, upcoming } from '~/data/editions';
-import { socials } from '~/data/site';
+import { socials, contact } from '~/data/site';
 import { useArchive } from '~/composables/useArchive';
 import InstagramIcon from "./icons/instagram.vue";
 import YoutubeIcon from "./icons/youtube.vue";

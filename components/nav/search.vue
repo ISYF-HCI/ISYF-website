@@ -175,7 +175,7 @@ import { scientists, scientistId } from "~/data/scientists";
 // guests appear without changes here.
 const index = [
   { title: "Home", kind: "Page", href: "" },
-  { title: "Contact us", kind: "Email, phone and address", href: "#contact" },
+  { title: "Contact us", kind: "Email and address", href: "#contact" },
   { title: `ISYF ${upcoming.year}`, kind: "Coming soon", href: `${upcoming.year}`, extra: (upcoming.chairs ?? []).map(chairName).join(" ") },
   { title: "Editions & themes", kind: "Every ISYF since 2009", href: "history" },
   { title: "Nobel laureates & eminent scientists", kind: "Everyone ISYF has invited", href: "laureates" },
