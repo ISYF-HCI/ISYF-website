@@ -24,7 +24,7 @@ favour three groups above.
 
 Official website of International Science Youth Forum (ISYF) @ Singapore,
 student-run science enrichment forum first held in 2009, hosted by Hwa Chong
-Institution's Students' Science Research Club (SSRC) and co-organised by
+Institution's Students' Science Research Club (SSRC) and sponsored by
 Ministry of Education, Singapore. Site covers every edition, hosts current
 edition's details and keeps past edition websites as archives.
 

@@ -26,7 +26,7 @@
       </section>
 
       <section>
-        <h2>ORGANISERS</h2>
+        <h2>{{ archive ? "ORGANISERS" : "ORGANISER & SPONSOR" }}</h2>
         <div class="organizers">
           <img :src="useBase('images/logos/moe_logo.png')" alt="Ministry of Education" />
           <img :src="useBase('images/logos/hc_logo.png')" alt="Hwa Chong Institution" />
