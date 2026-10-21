@@ -177,6 +177,8 @@ A restrained plaster-and-ink ground with one bright Hwa Chong red used only as a
 ### Named Rules
 **The Engraved Names Rule.** Uppercase tracked serif is reserved for names on the home honour board (and the nav's tracked Lexend items). Do not set headings or running text in caps.
 
+**The Small Heading Rule.** Headings under about 20px that sit above Lexend text (the three goals, organiser names) are Lexend 600, not Caslon. A thin Caslon heading directly over Lexend body reads as a font clash; bold Lexend keeps the block in one voice. Caslon stays for page and section headings, numerals, themes and names.
+
 **The Serif Holds the Record Rule.** Years, themes and names are set in Caslon; explanatory prose is Lexend. Do not swap them.
 
 ## Layout
@@ -229,10 +231,10 @@ A section on the plaster ground, inside the content column, opened by a 2px Hwa 
 The first thing on the home page: a full-width Archive Slate bar (#21282c) linking to the upcoming edition, with a small Hwa Chong Red "Coming soon" tag, plaster text and an arrow that nudges on hover. On phones it drops the long edition name.
 
 ### Photo Reel
-A full-bleed strip of event photos (from `homePhotos` in `data/site.js`, about 440px tall webp files in `public/images/home/`) scrolling slowly left in a seamless loop, 2px corners, 0.75rem gaps. It pauses on hover and keyboard focus; with reduced motion it stops and becomes a scrollable row.
+A full-bleed strip of event photos (from `homePhotos` in `data/site.js`, about 440px tall webp files in `public/images/home/`). Choose formal, grand photos: ceremonies, stage moments, smiling delegates in blazers, and the striking light-installation shots. Leave out closed eyes, phones and casual or sleepy moments scrolling slowly left in a seamless loop, 2px corners, 0.75rem gaps. It pauses on hover and keyboard focus; with reduced motion it stops and becomes a scrollable row.
 
 ### Organisers and Contact
-Organisers lead with Hwa Chong Institution and the Ministry of Education as two featured entries (white logo tile, name, small-caps role, a sentence), then smaller partner logos in a grid of hairline-ruled cells headed "With the support of". Contact us is a split section with a definition list (small-caps labels, ruled rows) for email, phone, fax, address and socials, anchored at `#contact`.
+"Organiser & sponsor" leads with Hwa Chong Institution (organiser) and the Ministry of Education (sponsor) as two featured entries (white logo tile, name, small-caps role, a sentence), then smaller partner logos in a grid of hairline-ruled cells headed "With the support of". Contact us is a split section with a definition list (small-caps labels, ruled rows) for email, phone, fax, address and socials, anchored at `#contact`.
 
 ### Site Search
 A search field in the nav on the ISYF-wide pages only (archived sites keep their own nav). Ink-outlined 2px field with a search icon that widens on focus; results drop down in a plaster panel with an ink border and soft shadow, keyboard navigable. It searches pages, editions, themes, co-chairpersons and every Nobel laureate and scientist, all built from `data/`.

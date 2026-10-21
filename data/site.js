@@ -17,7 +17,7 @@ export const contact = {
   address: "661 Bukit Timah Road, Singapore 269734",
 };
 
-// The two organisers, featured on the home page
+// The organiser and the sponsor, featured on the home page
 export const organisers = [
   {
     name: "Hwa Chong Institution",
@@ -28,8 +28,8 @@ export const organisers = [
   },
   {
     name: "Ministry of Education, Singapore",
-    role: "Co-organiser",
-    text: "The Ministry of Education (MOE) co-organises ISYF and supports the forum each year.",
+    role: "Sponsor",
+    text: "The Ministry of Education (MOE) sponsors ISYF and supports the forum each year.",
     href: "https://www.moe.gov.sg",
     image: "moe_logo.png",
   },
@@ -53,19 +53,16 @@ export const partners = [
 export const homePhotos = {
   edition: 2026,
   photos: [
-    { file: "isyf-2026-01.webp", alt: "Delegates arriving at Changi Airport with ISYF welcome signs" },
-    { file: "isyf-2026-02.webp", alt: "Delegates and student facilitators seated outdoors at Hwa Chong" },
-    { file: "isyf-2026-03.webp", alt: "A speaker answering questions from delegates" },
-    { file: "isyf-2026-04.webp", alt: "A delegate in discussion with a speaker" },
-    { file: "isyf-2026-05.webp", alt: "A speaker talking with delegates" },
-    { file: "isyf-2026-06.webp", alt: "Delegates working in a laboratory" },
-    { file: "isyf-2026-07.webp", alt: "Delegates seated in a lecture theatre" },
-    { file: "isyf-2026-08.webp", alt: "Delegates watching a demonstration with fire" },
-    { file: "isyf-2026-09.webp", alt: "A delegate presenting a gift to a speaker" },
-    { file: "isyf-2026-10.webp", alt: "A delegate presenting research to a room" },
-    { file: "isyf-2026-11.webp", alt: "A speaker on stage in the Hwa Chong auditorium" },
-    { file: "isyf-2026-12.webp", alt: "Panel on stage under the ISYF 2026 theme, Curiosity Unlocked" },
-    { file: "isyf-2026-13.webp", alt: "Delegates on stage receiving recognition" },
+    { file: "isyf-2026-01.webp", alt: "ISYF 2026 delegates in school blazers at the closing ceremony" },
+    { file: "isyf-2026-02.webp", alt: "Delegates at the closing ceremony dinner, under the ISYF 2026 closing ceremony screen" },
+    { file: "isyf-2026-03.webp", alt: "Student moderators in dialogue with Nobel laureate Professor Brian Schmidt on stage" },
+    { file: "isyf-2026-04.webp", alt: "The Hwa Chong auditorium stage set for the opening, under the theme Curiosity Unlocked" },
+    { file: "isyf-2026-05.webp", alt: "A token of appreciation presented on stage" },
+    { file: "isyf-2026-06.webp", alt: "Delegates and a teacher in formal dress at the closing dinner" },
+    { file: "isyf-2026-07.webp", alt: "Delegates exploring a glowing immersive art gallery" },
+    { file: "isyf-2026-08.webp", alt: "A lecture on dark matter in the Hwa Chong auditorium" },
+    { file: "isyf-2026-09.webp", alt: "Two student moderators with a Nobel laureate on stage" },
+    { file: "isyf-2026-10.webp", alt: "Smiling delegates inside a light installation" },
   ],
 };
 

@@ -58,7 +58,7 @@
           enrichment programme for students from all over the world. First
           organised in {{ firstYear }} by students of Hwa Chong Institution, it is
           hosted by the Institution's Students' Science Research Club (SSRC) and
-          co-organised by the Ministry of Education, Singapore.
+          sponsored by the Ministry of Education, Singapore.
         </p>
         <p>
           Each forum brings delegates face to face with Nobel laureates and
@@ -169,7 +169,7 @@
 
     <section class="ruled">
       <div class="section-head">
-        <h2>Organisers</h2>
+        <h2>Organiser &amp; sponsor</h2>
       </div>
       <ul class="organisers">
         <li v-for="org in organisers" :key="org.name">
@@ -484,7 +484,13 @@
 }
 
 .goals h3 {
-  font-size: 20px;
+  /* Small headings sit in the body face, bold, so they don't clash with
+     the Lexend text beneath them */
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.35;
+  letter-spacing: 0;
 }
 
 .goals p {
@@ -841,6 +847,10 @@
 
 .organisers h3 {
   margin: 0;
+  font-family: var(--font);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0;
 }
 
 .organisers .meta {
