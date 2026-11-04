@@ -277,9 +277,10 @@
 }
 
 .hero-logo {
-  width: 96px;
-  height: 96px;
-  margin: 0 0 0.5rem -0.75rem;
+  width: 168px;
+  height: 168px;
+  /* The logo file has empty margins, so pull it back into the text column */
+  margin: -0.9rem 0 0 -1.4rem;
 }
 
 .title-stack {
@@ -367,8 +368,9 @@
   }
 
   .hero-logo {
-    width: 72px;
-    height: 72px;
+    width: 128px;
+    height: 128px;
+    margin: -0.7rem 0 0 -1.1rem;
   }
 
   .hero-title {
@@ -825,16 +827,16 @@
 .organisers li {
   margin: 0;
   display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 1.5rem;
   align-items: start;
 }
 
 .org-logo {
   display: grid;
   place-items: center;
-  aspect-ratio: 4 / 3;
-  padding: 0.75rem;
+  height: 9rem;
+  padding: 0.5rem;
   border: 1px solid var(--rule);
   border-radius: 2px;
   background-color: #ffffff;
@@ -843,6 +845,7 @@
 .org-logo img {
   max-width: 100%;
   max-height: 100%;
+  object-fit: contain;
 }
 
 .organisers h3 {
@@ -897,11 +900,12 @@
   height: 7rem;
   padding: 1rem;
   box-sizing: border-box;
+  background-color: #ffffff;
   transition: background-color 200ms;
 }
 
 .partners a:hover {
-  background-color: #ffffff;
+  background-color: #f6f6f6;
 }
 
 .partners img {
@@ -915,7 +919,11 @@
 
 @media screen and (max-width: 560px) {
   .organisers li {
-    grid-template-columns: 6.5rem minmax(0, 1fr);
+    grid-template-columns: 8.5rem minmax(0, 1fr);
+  }
+
+  .org-logo {
+    height: 6.5rem;
   }
 
   .partners {
