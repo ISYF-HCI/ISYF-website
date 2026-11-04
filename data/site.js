@@ -63,6 +63,11 @@ export const homePhotos = {
     { file: "isyf-2026-08.webp", alt: "A lecture on dark matter in the Hwa Chong auditorium" },
     { file: "isyf-2026-09.webp", alt: "Two student moderators with a Nobel laureate on stage" },
     { file: "isyf-2026-10.webp", alt: "Smiling delegates inside a light installation" },
+    { file: "isyf-2026-11.webp", alt: "Student emcees at the podium" },
+    { file: "isyf-2026-12.webp", alt: "Delegates silhouetted against rainbow-coloured light" },
+    { file: "isyf-2026-13.webp", alt: "Educators at the closing dinner" },
+    { file: "isyf-2026-14.webp", alt: "A delegate presenting research" },
+    { file: "isyf-2026-15.webp", alt: "Awards presented on stage" },
   ],
 };
 
