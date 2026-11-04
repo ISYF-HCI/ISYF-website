@@ -38,7 +38,7 @@ export const organisers = [
 // Partners and supporters, shown smaller beneath the organisers.
 // `scale` evens out logos whose image files carry more or less empty space.
 export const partners = [
-  { name: "National Research Foundation", href: "https://www.nrf.gov.sg", image: "nrf_logo.png", scale: 1.7 },
+  { name: "National Research Foundation", href: "https://www.nrf.gov.sg", image: "nrf_logo.png", scale: 2.1 },
   { name: "Global Young Scientists Summit", href: "https://gyss.nrf.gov.sg", image: "gyss_logo.png" },
   { name: "NTU Institute of Advanced Studies", href: "https://www.ntu.edu.sg/ias", image: "ntuias_logo.png", scale: 1.15 },
   { name: "National University of Singapore", href: "https://nus.edu.sg", image: "nus_logo.png" },
