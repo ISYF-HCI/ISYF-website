@@ -277,10 +277,10 @@
 }
 
 .hero-logo {
-  width: 168px;
-  height: 168px;
+  width: 240px;
+  height: 240px;
   /* The logo file has empty margins, so pull it back into the text column */
-  margin: -0.9rem 0 0 -1.4rem;
+  margin: -1.4rem 0 -0.5rem -1.8rem;
 }
 
 .title-stack {
@@ -368,9 +368,9 @@
   }
 
   .hero-logo {
-    width: 128px;
-    height: 128px;
-    margin: -0.7rem 0 0 -1.1rem;
+    width: 176px;
+    height: 176px;
+    margin: -1rem 0 -0.4rem -1.3rem;
   }
 
   .hero-title {
@@ -827,7 +827,7 @@
 .organisers li {
   margin: 0;
   display: grid;
-  grid-template-columns: 13rem minmax(0, 1fr);
+  grid-template-columns: 15rem minmax(0, 1fr);
   gap: 1.5rem;
   align-items: start;
 }
@@ -835,16 +835,16 @@
 .org-logo {
   display: grid;
   place-items: center;
-  height: 9rem;
-  padding: 0.5rem;
+  height: 8rem;
+  padding: 0.3rem;
   border: 1px solid var(--rule);
   border-radius: 2px;
   background-color: #ffffff;
 }
 
 .org-logo img {
-  max-width: 100%;
-  max-height: 100%;
+  width: 100%;
+  height: calc(8rem - 0.6rem - 2px);
   object-fit: contain;
 }
 
@@ -919,11 +919,15 @@
 
 @media screen and (max-width: 560px) {
   .organisers li {
-    grid-template-columns: 8.5rem minmax(0, 1fr);
+    grid-template-columns: 9.5rem minmax(0, 1fr);
   }
 
   .org-logo {
     height: 6.5rem;
+  }
+
+  .org-logo img {
+    height: calc(6.5rem - 0.6rem - 2px);
   }
 
   .partners {
