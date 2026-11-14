@@ -73,29 +73,34 @@ export const homePhotos = {
 
 // Sections of the upcoming edition's site. Until a page exists at
 // pages/<year>/<slug>.vue, visiting it redirects to the coming-soon page
-// (middleware/redirects.global.js), so add pages here as they go live.
+// (middleware/redirects.global.js). Once a page is added, mark it `live` so
+// the coming-soon page links to it instead of calling it "coming soon".
 export const upcomingSections = [
-  { slug: "about", label: "About", icon: "info", archived: "2026/about/about_isyf" },
+  { slug: "about", label: "About", icon: "info", archived: "2026/about/about_isyf", live: true },
   { slug: "programme", label: "Programme", icon: "event_note", archived: "2026/programme" },
   { slug: "profiles", label: "Profiles", icon: "person", archived: "2026/profiles/speakers" },
   { slug: "photos", label: "Photos", icon: "photo_library", archived: "2026/photos" },
-  { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq" },
+  { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq", live: true },
 ];
 
-// The forum's three goals, abridged for the home page. The full text is in
-// components/goals.vue on the archived About page.
+// The forum's three goals. `text` is the abridged version for the home page;
+// `full` is the complete text shown on the upcoming edition's About page
+// (the archived 2026 About page keeps its own copy in components/goals.vue).
 export const goals = [
   {
     title: "Inspire Passion for Science Among Youth",
     text: "Invited Nobel laureates and eminent scientists will inspire them through stories of their own life experiences and scientific discoveries.",
+    full: "ISYF aims to provide students who are highly inquisitive and passionate about the sciences with ample opportunities to share and discuss their interests in Science, technology and scientific research. They will be exposed to many fields of science which will broaden their outlook and understanding of the scientific world. Invited Nobel laureates and eminent scientists will inspire them through stories of their own life experiences and scientific discoveries. These interactions will help create greater awareness among the youth about the importance of broad-based knowledge, fuel their curiosity, engender relentless tenacity and a global outlook when considering the pursuit of science as a meaningful and fulfilling endeavour.",
   },
   {
     title: "Establish Cooperation and Friendship Amongst Young Talented Science Students",
     text: "Students will have many opportunities to interact in different cross-cultural groups and forge strong bonds with each other throughout the Forum.",
+    full: "Students will have many opportunities to interact in different cross-cultural groups and forge strong bonds with each other throughout the Forum. Activities are designed to promote mutual cooperation, understanding and appreciation of each other’s diverse cultures while sharing a common passion in science, technology and research.",
   },
   {
     title: "Build Capacities of Science Educators",
     text: "Through professional sharing and discussions among Science educators, ISYF helps build the competencies of teachers who are navigating an evolving educational landscape.",
+    full: "Through professional sharing and discussions among Science educators, ISYF helps build the competencies of teachers who are navigating an evolving educational landscape.",
   },
 ];
 
@@ -176,6 +181,11 @@ const legacyEventPages = [
 ];
 export const legacyRedirects = {
   ...Object.fromEntries(legacyEventPages.map((p) => [p, `/${upcoming.year}${p}`])),
+  // The 2027 site has a single About page and no About Singapore page
+  "/about/about_isyf": `/${upcoming.year}/about`,
+  [`/${upcoming.year}/about/about_isyf`]: `/${upcoming.year}/about`,
+  "/about/about_singapore": "/2026/about/about_singapore",
+  [`/${upcoming.year}/about/about_singapore`]: "/2026/about/about_singapore",
   "/archive/infographics": "/2026/archive/infographics",
   // The 2026 reflection page was never finished; its photos live on Photos
   "/reflection": "/2026/photos",

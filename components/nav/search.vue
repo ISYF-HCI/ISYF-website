@@ -170,13 +170,17 @@ import { ref, computed, watch } from "vue";
 import { useBase } from "~/composables/useBase";
 import { editions, upcoming, chairName } from "~/data/editions";
 import { scientists, scientistId } from "~/data/scientists";
+import { upcomingSections } from "~/data/site";
 
 // Everything the search can find. Built from data/, so new editions and
 // guests appear without changes here.
 const index = [
   { title: "Home", kind: "Page", href: "" },
   { title: "Contact us", kind: "Email and address", href: "#contact" },
-  { title: `ISYF ${upcoming.year}`, kind: "Coming soon", href: `${upcoming.year}`, extra: (upcoming.chairs ?? []).map(chairName).join(" ") },
+  { title: `ISYF ${upcoming.year}${upcoming.theme ? ` · ${upcoming.theme}` : ""}`, kind: "Coming soon", href: `${upcoming.year}`, extra: (upcoming.chairs ?? []).map(chairName).join(" ") },
+  ...upcomingSections
+    .filter((s) => s.live)
+    .map((s) => ({ title: `ISYF ${upcoming.year} ${s.label}`, kind: "Page", href: `${upcoming.year}/${s.slug}` })),
   { title: "Editions & themes", kind: "Every ISYF since 2009", href: "history" },
   { title: "Nobel laureates & eminent scientists", kind: "Everyone ISYF has invited", href: "laureates" },
   ...editions.map((e) => ({

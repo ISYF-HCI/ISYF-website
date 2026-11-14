@@ -2,6 +2,7 @@
   <div>
     <Masthead :background="useBase('images/night-clocktower.webp')" :dim="0.55">
       <h1>ISYF {{ upcoming.year }}</h1>
+      <p v-if="upcoming.theme" class="masthead-theme">“{{ upcoming.theme }}”</p>
       <p class="masthead-lede">
         The {{ ordinal(upcoming.edition) }} International Science Youth Forum,
         marking {{ yearsOfIsyf }} years of ISYF. Coming soon.
@@ -31,8 +32,10 @@
           Since {{ firstYear }}, ISYF has brought young scientists from around the
           world to Singapore to meet Nobel laureates and eminent scientists, share
           their research and make friends across cultures. Planning for the
-          {{ ordinal(upcoming.edition) }} edition is under way, and the theme,
-          dates, programme and speakers will be announced here.
+          {{ ordinal(upcoming.edition) }} edition is under way<template v-if="upcoming.theme">,
+          under the theme “{{ upcoming.theme }}”. The dates, programme and
+          speakers will be announced here.</template><template v-else>, and the
+          theme, dates, programme and speakers will be announced here.</template>
         </p>
 
         <ul class="sections">
@@ -42,10 +45,18 @@
             :class="{ highlighted: requested?.slug === section.slug }"
           >
             <h3>{{ section.label }}</h3>
-            <span class="meta">coming soon</span>
-            <a class="text-link" :href="useBase(section.archived)">
-              See ISYF {{ previous.year }} <ArrowIcon />
-            </a>
+            <template v-if="section.live">
+              <span class="meta">now live</span>
+              <a class="text-link" :href="useBase(`${upcoming.year}/${section.slug}`)">
+                Read ISYF {{ upcoming.year }} {{ section.label }} <ArrowIcon />
+              </a>
+            </template>
+            <template v-else>
+              <span class="meta">coming soon</span>
+              <a class="text-link" :href="useBase(section.archived)">
+                See ISYF {{ previous.year }} <ArrowIcon />
+              </a>
+            </template>
           </li>
         </ul>
       </section>
@@ -106,6 +117,15 @@
   font-size: 15px;
   --fg: var(--plaster);
   opacity: 0.85;
+}
+
+.masthead-theme {
+  max-width: 28ch;
+  margin: 0 auto 1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.3;
+  --fg: var(--plaster);
 }
 
 .masthead-lede {
