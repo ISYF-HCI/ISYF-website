@@ -61,7 +61,8 @@
           <span class="meta">{{ ordinal(upcoming.edition) }} edition</span>
         </div>
         <div class="entry-body">
-          <p class="entry-theme missing">Coming soon. Theme to be announced</p>
+          <h2 v-if="upcoming.theme" class="entry-theme">“{{ upcoming.theme }}”</h2>
+          <p v-else class="entry-theme missing">Coming soon. Theme to be announced</p>
           <dl v-if="upcoming.chairs?.length" class="guests">
             <dt>Co-chairpersons</dt>
             <dd><ChairNames :chairs="upcoming.chairs" /></dd>

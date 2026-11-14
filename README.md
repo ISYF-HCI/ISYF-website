@@ -22,7 +22,9 @@ to reuse/recycle as much of this as possible.
 - `/2027` is the upcoming edition. Any `/2027/...` page that doesn't exist yet
   (about, programme, profiles, photos, faq) redirects to the coming-soon page
   at `/2027`. To publish one, add it under `pages/2027/` and it takes over
-  from the redirect.
+  from the redirect, then mark it `live: true` in `upcomingSections`
+  (`data/site.js`) so the coming-soon page links to it. About (`/2027/about`,
+  a single page with the theme and goals) and FAQ (`/2027/faq`) are live.
 - `/2026` is the archived ISYF 2026 website, kept as it was with its own menu
   and an "Archive" bar on top. Old root URLs (e.g. `/programme`) redirect to
   their 2027 equivalents, see `legacyRedirects` in `data/site.js`.
