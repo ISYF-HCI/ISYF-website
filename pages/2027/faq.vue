@@ -167,47 +167,6 @@ const questions = [
       },
     ],
   },
-  {
-    title: "Accommodation",
-    items: [
-      {
-        q: "Where will I be staying?",
-        a: "All delegates and educators will be housed at the Hwa Chong Institution Boarding School. More information of the boarding school can be found at <a href='http://www.hcibs.edu.sg' target='_blank' rel='noopener'>http://www.hcibs.edu.sg</a>",
-      },
-      {
-        q: "Will I be sharing rooms with other participants?",
-        a: "Yes you will. In fact, the rooms of the boarding school that you'll be staying in are either 2 bedders or 4 bedders. Your roommates are likely to be delegates from other schools. We believe that this is an invaluable opportunity for you to form close friendships and create precious memories.",
-      },
-      {
-        q: "Is there any laundry service available?",
-        a: "There are self-launderette facilities (washing machines located on the ground floor of Halls B, E and G) available for usage in the boarding school. Each wash / dry takes approximately 30 minutes at a cost of 2 dollars per wash and 1 dollar per dry.",
-      },
-      {
-        q: "Is there a need to bring bath towels/bed sheets?",
-        a: "Bed sheets will be provided already upon check in to the boarding school. However, do note that you would have to bring your own bath towels and toiletries (soap, toothbrush etc.) sufficient for the course of ISYF as the Hwa Chong Institution Boarding School does not provide these.",
-      },
-      {
-        q: "What about safety/security?",
-        a: "The Hwa Chong Institution Boarding School is manned by security personnel throughout the day. All visitors are strictly screened before entering. The various halls of residence are also equipped with an access card system which only allows authorised entries into the halls.",
-      },
-      {
-        q: "How much money do I need to bring to the forum?",
-        a: "All food, programme and transportation costs are covered. You may wish to bring extra money to purchase additional items from the convenience store located in the boarding school or souvenirs and gift items.",
-      },
-      {
-        q: "Is there Internet available in the boarding school?",
-        a: "Yes, there is. There is wireless internet access available in the common areas.",
-      },
-      {
-        q: "What if I have dietary requirements?",
-        a: "If you have submitted your dietary requirements to us through email, we would have taken note of all your requests and will try our best to cater to them. Should you need to make any changes to your requirements, please do not hesitate to contact us as we wish to make your experience here as pleasant as possible.",
-      },
-      {
-        q: "Can I call for food deliveries?",
-        a: "Most of your meals here will be catered from reputable catering companies according to your dietary requirements. For the rest of the meals, you will be brought to local eating centres. Hence, there will be no need for you to call for external food deliveries. Additionally, we will not be allowing this for safety considerations.",
-      },
-    ],
-  },
 ];
 
 // Which questions are open, per section
