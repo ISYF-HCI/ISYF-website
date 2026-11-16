@@ -133,42 +133,6 @@
 
     <section class="ruled">
       <div class="section-head">
-        <h2>Themes through the years</h2>
-        <p>
-          Every edition is anchored by a theme that frames its lectures,
-          dialogues and activities. The most recent:
-        </p>
-      </div>
-      <ol class="themes">
-        <li class="theme" v-for="edition in recentEditions" :key="edition.year">
-          <a class="theme-year" :href="useBase(`history#y${edition.year}`)">{{ edition.year }}</a>
-          <div>
-            <span class="theme-name" :class="{ missing: !edition.theme }">
-              {{ edition.theme ?? edition.note }}
-            </span>
-            <span class="meta">
-              {{ ordinal(edition.edition) }} edition<template v-if="edition.online"> · held online</template>
-            </span>
-          </div>
-        </li>
-      </ol>
-      <div class="section-actions">
-        <a class="plaque" :href="useBase('history')">
-          All {{ editions.length }} editions since {{ firstYear }} <ArrowIcon />
-        </a>
-        <a
-          v-for="edition in archivedEditions"
-          :key="edition.year"
-          class="text-link"
-          :href="useBase(`${edition.year}`)"
-        >
-          ISYF {{ edition.year }} website archive <ArrowIcon />
-        </a>
-      </div>
-    </section>
-
-    <section class="ruled">
-      <div class="section-head">
         <h2>Organiser &amp; sponsor</h2>
       </div>
       <ul class="organisers">
@@ -640,55 +604,6 @@
   }
 }
 
-/* ========== THEMES ========== */
-.themes {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
-  column-gap: 3rem;
-}
-
-.theme {
-  margin: 0;
-  padding-block: 0.875rem;
-  border-top: 1px solid var(--rule);
-  display: grid;
-  grid-template-columns: 4.5rem 1fr;
-  gap: 1rem;
-  align-items: baseline;
-}
-
-.theme-year {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  margin-block: -0.6rem;
-  font-family: var(--font-display);
-  font-size: 26px;
-  --fg: var(--crimson);
-  text-decoration: none;
-}
-
-.theme-year:hover {
-  text-decoration: underline;
-}
-
-.theme-name {
-  display: block;
-  margin-top: 0.125rem;
-  font-family: var(--font-serif);
-  font-size: 17px;
-  line-height: 1.4;
-}
-
-.theme-name.missing {
-  font-family: var(--font);
-  font-size: 15px;
-  --fg: var(--ink-mute);
-}
-
 /* ========== ANNOUNCEMENT BANNER ========== */
 .announce {
   position: relative;
@@ -996,10 +911,6 @@ import {
   contact,
   socials,
 } from "~/data/site";
-
-const editionsNewestFirst = [...editions].reverse();
-const archivedEditions = editionsNewestFirst.filter((e) => e.archive);
-const recentEditions = editionsNewestFirst.slice(0, 4);
 
 const nobelLaureates = scientists
   .filter((s) => s.category === "nobel")
