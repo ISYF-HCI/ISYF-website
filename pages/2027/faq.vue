@@ -191,49 +191,8 @@ const questions = [
     ],
   },
   {
-    title: "Participation",
+    title: "Contact",
     items: [
-      {
-        q: `Who can take part in ISYF ${year}?`,
-        a: `ISYF ${year} is open to students from local schools in Singapore who are inquisitive and passionate about science, technology and research. Delegates take part through their schools, so if you are interested, please approach your school's science department or teacher-in-charge.`,
-      },
-      {
-        q: "Are there international delegates this year?",
-        a: `ISYF ${year} brings together delegates from local schools only. While there are no overseas delegations this year, you will work in mixed groups with peers from other schools, exchanging ideas across disciplines and backgrounds, in the spirit of this year's theme.`,
-      },
-      {
-        q: "Can teachers attend as well?",
-        a: "Yes. Educators accompanying their school's delegates are welcome to join the forum. Through professional sharing and discussions, ISYF also aims to build the capacities of science educators.",
-      },
-    ],
-  },
-  {
-    title: "Logistics",
-    items: [
-      {
-        q: "Will I be staying overnight?",
-        a: `No. ISYF ${year} does not include an overnight stay. Delegates will attend the programme during the day and return home at the end of each day.`,
-      },
-      {
-        q: "Where will ISYF be held?",
-        a: `Most activities will take place at Hwa Chong Institution, ${contact.address}. Some sessions may be held at partner institutions such as universities and research centres, and we will arrange transport between Hwa Chong Institution and these venues.`,
-      },
-      {
-        q: "How do I get to Hwa Chong Institution?",
-        a: "Hwa Chong Institution is a short walk from Tan Kah Kee MRT station on the Downtown Line, and is also served by buses along Bukit Timah Road. Reporting times and the meeting point for each day will be shared before the forum.",
-      },
-      {
-        q: "What should I wear?",
-        a: "Please come in your school uniform unless told otherwise. If any event needs a different dress code, we will let you know in advance.",
-      },
-      {
-        q: "What should I bring?",
-        a: "Bring a water bottle, stationery and anything you need for the day, such as an umbrella for Singapore's weather. If you are presenting your research, we will share what to prepare closer to the date.",
-      },
-      {
-        q: "What if I have dietary requirements?",
-        a: "If you have submitted your dietary requirements to us, we would have taken note of all your requests and will try our best to cater to them. Should you need to make any changes to your requirements, please do not hesitate to contact us as we wish to make your experience here as pleasant as possible.",
-      },
       {
         q: "Who can I contact if I have more questions?",
         a: `For general enquiries, email us at ${mail(contact.email)}. You can also reach the student organising committee at ${mail(socials.email)}, or follow us on Instagram at ${link(socials.instagram.url, socials.instagram.handle)} for the latest updates.`,
