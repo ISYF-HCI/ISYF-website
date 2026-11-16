@@ -5,7 +5,7 @@
       <p v-if="upcoming.theme" class="masthead-theme">“{{ upcoming.theme }}”</p>
       <p class="masthead-lede">
         The {{ ordinal(upcoming.edition) }} International Science Youth Forum.
-        Coming soon.
+        Coming soon...
       </p>
     </Masthead>
 

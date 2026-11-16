@@ -76,11 +76,11 @@ export const homePhotos = {
 // (middleware/redirects.global.js). Once a page is added, mark it `live` so
 // the coming-soon page links to it instead of calling it "coming soon".
 export const upcomingSections = [
-  { slug: "about", label: "About", icon: "info", archived: "2026/about/about_isyf" },
+  { slug: "about", label: "About", icon: "info", archived: "2026/about/about_isyf", live: true },
   { slug: "programme", label: "Programme", icon: "event_note", archived: "2026/programme" },
   { slug: "profiles", label: "Profiles", icon: "person", archived: "2026/profiles/speakers" },
   { slug: "photos", label: "Photos", icon: "photo_library", archived: "2026/photos" },
-  { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq" },
+  { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq", live: true },
 ];
 
 // The forum's three goals. `text` is the abridged version for the home page;
