@@ -23,8 +23,9 @@ to reuse/recycle as much of this as possible.
   (about, programme, profiles, photos, faq) redirects to the coming-soon page
   at `/2027`. To publish one, add it under `pages/2027/` and it takes over
   from the redirect, then mark it `live: true` in `upcomingSections`
-  (`data/site.js`) so the coming-soon page links to it. About (`/2027/about`,
-  a single page with the theme and goals) and FAQ (`/2027/faq`) are live.
+  (`data/site.js`) so the coming-soon page links to it. Nothing is live yet:
+  the finished About and FAQ pages are parked in `drafts/2027/`; move them
+  back into `pages/2027/` and mark them `live: true` to publish them.
 - `/2026` is the archived ISYF 2026 website, kept as it was with its own menu
   and an "Archive" bar on top. Old root URLs (e.g. `/programme`) redirect to
   their 2027 equivalents, see `legacyRedirects` in `data/site.js`.
@@ -52,7 +53,7 @@ When ISYF 2027 is over and 2028 begins:
    `data/scientists.js`.
 4. Create `pages/2028/index.vue` that renders `components/comingSoon.vue`
    with the `masthead` layout.
-5. Add the 2028 co-chairpersons to `upcoming.chairs`, and swap the home page
+5. Add the 2028 co-chairpersons to `upcoming.chairs` if they are to be shown, and swap the home page
    photos in `homePhotos` for ones from the new archived edition.
 
 ## Styling

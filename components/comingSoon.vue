@@ -4,12 +4,8 @@
       <h1>ISYF {{ upcoming.year }}</h1>
       <p v-if="upcoming.theme" class="masthead-theme">“{{ upcoming.theme }}”</p>
       <p class="masthead-lede">
-        The {{ ordinal(upcoming.edition) }} International Science Youth Forum,
-        marking {{ yearsOfIsyf }} years of ISYF. Coming soon.
-      </p>
-      <p v-if="upcoming.chairs?.length" class="masthead-chairs">
-        Co-chairpersons, Student Organising Committee:
-        <ChairNames :chairs="upcoming.chairs" />
+        The {{ ordinal(upcoming.edition) }} International Science Youth Forum.
+        Coming soon.
       </p>
     </Masthead>
 
@@ -111,14 +107,6 @@
 </template>
 
 <style scoped>
-.masthead-chairs {
-  margin: 1.25rem auto 0;
-  max-width: 40ch;
-  font-size: 15px;
-  --fg: var(--plaster);
-  opacity: 0.85;
-}
-
 .masthead-theme {
   max-width: 28ch;
   margin: 0 auto 1rem;
@@ -264,7 +252,6 @@ import { upcomingSections, archivePages, socials, contact } from "~/data/site";
 import InstagramIcon from "~/components/icons/instagram.vue";
 import YoutubeIcon from "~/components/icons/youtube.vue";
 import ArrowIcon from "~/components/icons/arrow.vue";
-import ChairNames from "~/components/chairNames.vue";
 
 useHead({ title: `ISYF ${upcoming.year} · Coming Soon` });
 
