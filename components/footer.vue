@@ -26,10 +26,16 @@
       </section>
 
       <section>
-        <h2>{{ archive ? "ORGANISERS" : "ORGANISER & SPONSOR" }}</h2>
+        <h2>ORGANISER & SPONSOR</h2>
         <div class="organizers">
-          <img :src="useBase('images/logos/moe_logo.png')" alt="Ministry of Education" />
-          <img :src="useBase('images/logos/hc_logo.png')" alt="Hwa Chong Institution" />
+          <figure>
+            <img :src="useBase('images/logos/hc_logo.png')" alt="Hwa Chong Institution" />
+            <figcaption>Organiser</figcaption>
+          </figure>
+          <figure>
+            <img :src="useBase('images/logos/moe_logo.png')" alt="Ministry of Education" />
+            <figcaption>Sponsor</figcaption>
+          </figure>
         </div>
       </section>
 
@@ -200,10 +206,19 @@ p {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
-.organizers img {
+.organizers figure {
+  margin: 0;
   width: min(calc(100% - 2rem), 11rem);
+}
+.organizers img {
+  display: block;
+  width: 100%;
   background-color: white;
   border-radius: 8px;
+}
+.organizers figcaption {
+  margin-top: 0.5rem;
+  font-size: 14px;
 }
 
 /* ========== SOCIALS & CONTACTS ========== */
