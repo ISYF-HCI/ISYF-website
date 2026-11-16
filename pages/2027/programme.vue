@@ -380,7 +380,7 @@ const days = [
     items: [
       { time: "0800 – 0830", name: "Registration and poster collection", type: "rest", desc: "Delegates register and collect their posters." },
       { time: "0830 – 0900", name: "Opening Ceremony", type: "ceremony", desc: "Opening address by the Co-Chairpersons, followed by a briefing on the schedule and safety." },
-      { time: "0900 – 1000", name: "Icebreakers", type: "fun", desc: "Games such as Speed Dating, Spice Potato, 50/50 and What's in the Box to meet your group." },
+      { time: "0900 – 1000", name: "Icebreakers", type: "fun", desc: "Games such as Spice Potato, 50/50 and What's in the Box to meet your group." },
       { time: "1000 – 1030", name: "Preparation for Dialogues and Masterclasses", type: "rest" },
       { time: "1030 – 1200", name: "Dialogues and Masterclasses", type: "learn", desc: "Small-group sessions with local scientists." },
       { time: "1200 – 1300", name: "Lunch", type: "rest" },
@@ -411,7 +411,7 @@ const days = [
       { time: "1200 – 1245", name: "Change into formal clothes", type: "rest", desc: "White shirt with blazer or school uniform." },
       { time: "1300 – 1500", name: "Keynote Lecture and Q&A", type: "ceremony", desc: "Keynote by Pat Hanrahan, followed by a Q&A with student moderators." },
       { time: "1500 – 1600", name: "Poster Exhibition", type: "learn", desc: "Delegates present their posters outside the College Auditorium." },
-      { time: "1600 – 1930", name: "Closing Ceremony and Dinner", type: "ceremony", desc: "The Inspiring Spaces Challenge, closing speeches, prize giving and a buffet dinner. Venue to be confirmed." },
+      { time: "1600 – 1930", name: "Closing Ceremony and Dinner", type: "ceremony", desc: "The Inspiring Spaces Challenge, closing speeches, prize giving and a buffet dinner at HortPark." },
     ],
   },
 ];
