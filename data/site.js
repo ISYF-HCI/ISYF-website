@@ -79,7 +79,6 @@ export const upcomingSections = [
   { slug: "about", label: "About", icon: "info", archived: "2026/about/about_isyf", live: true },
   { slug: "programme", label: "Programme", icon: "event_note", archived: "2026/programme", live: true },
   { slug: "profiles", label: "Profiles", icon: "person", archived: "2026/profiles/speakers" },
-  { slug: "photos", label: "Photos", icon: "photo_library", archived: "2026/photos" },
   { slug: "faq", label: "FAQ", icon: "help_outline", archived: "2026/faq", live: true },
 ];
 
