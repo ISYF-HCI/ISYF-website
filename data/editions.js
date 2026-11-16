@@ -131,10 +131,6 @@ export const upcoming = {
   year: 2027,
   edition: 19,
   theme: "Inspiring Discovery, Connecting Humanity",
-  chairs: [
-    { name: "Fu Cai Gui", link: "https://www.linkedin.com/in/caiguifu/" },
-    { name: "Hong Debo", link: "https://sg.linkedin.com/in/debo-hong-460096421" },
-  ],
 };
 
 export const firstYear = editions[0].year;
