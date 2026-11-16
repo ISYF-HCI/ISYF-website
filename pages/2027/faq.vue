@@ -173,20 +173,8 @@ const questions = [
         a: `The theme for ISYF ${year} is “${upcoming.theme}”. It celebrates how science brings people together to question established ideas, respond to emerging challenges and imagine new possibilities. Read more about the theme and our goals on the ${link(useBase(`${year}/about`), "About page")}.`,
       },
       {
-        q: "What can I look forward to?",
-        a: "As your facilitators, we have planned an exciting array of activities, including lectures, Masterclasses and science quests. In fact, what you will see in the Programme Overview is just a slight preview of what you can experience here. It is our greatest hope that you'll not just take away valuable scientific insights from the forum, but also long-lasting friendships with fellow science enthusiasts from schools across Singapore.",
-      },
-      {
-        q: "What is a typical day like?",
-        a: "We believe the 5 days of ISYF will be an exciting and enriching experience for you. In a typical day, you can expect engaging dialogue sessions or lessons with eminent scientists in our lectures and Masterclasses, collaborative science activities with delegates from other schools, and opportunities to visit Singapore's own industries and universities for further insight into the research culture in Singapore. Get ready for an unforgettable journey of learning and discovery!",
-      },
-      {
         q: "Will I get to meet Nobel laureates and eminent scientists?",
         a: `Yes! Conversations with distinguished scientists are at the heart of ISYF. Through lectures, Masterclasses and dialogue sessions, Nobel laureates and eminent scientists will share their research and life journeys, and you will have the chance to pose your own questions to them. The speakers for ISYF ${year} will be announced on our Profiles page.`,
-      },
-      {
-        q: "Will I need to present my research?",
-        a: "In past editions, delegates shared their scientific research with eminent scientists, educators and fellow delegates at the Poster Exhibition. Details on research sharing for this year will be sent to participating schools closer to the forum.",
       },
     ],
   },
