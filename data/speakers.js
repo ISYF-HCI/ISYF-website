@@ -10,7 +10,7 @@ export const speakers = [
       {
         name: "Professor Pat Hanrahan",
         image: "pat-hanrahan.webp",
-        honour: "ACM A.M. Turing Award, 2019 · Three Academy Awards (Oscars)",
+        honour: "ACM A.M. Turing Award, 2019",
         bio: [
           "Pat Hanrahan is the Canon Professor of Computer Science and Electrical Engineering at Stanford University. A pioneer of computer graphics, he was an early member of the team at Pixar and a principal architect of RenderMan, the software behind the images in many animated and live-action films. He later co-founded Tableau Software, which made it easier for people everywhere to explore and understand data.",
           "Professor Hanrahan shared the 2019 ACM A.M. Turing Award with Edwin Catmull for fundamental contributions to 3-D computer graphics. He has also won three Academy Awards, also known as Oscars, for scientific and technical achievement, and is a member of the US National Academy of Sciences and the National Academy of Engineering.",
