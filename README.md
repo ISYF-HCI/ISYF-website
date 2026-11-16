@@ -20,7 +20,7 @@ to reuse/recycle as much of this as possible.
 - `/` is the ISYF home page, `/history` lists every edition and its theme,
   and `/laureates` lists every Nobel laureate and eminent scientist invited.
 - `/2027` is the upcoming edition. Any `/2027/...` page that doesn't exist yet
-  (about, programme, profiles, photos, faq) redirects to the coming-soon page
+  (about, programme, profiles, faq) redirects to the coming-soon page
   at `/2027`. To publish one, add it under `pages/2027/` and it takes over
   from the redirect, then mark it `live: true` in `upcomingSections`
   (`data/site.js`) so the coming-soon page links to it. About (`/2027/about`,
