@@ -166,7 +166,7 @@ const questions = [
     items: [
       {
         q: "Who are we?",
-        a: `The ISYF student organizing committee is made up of 42 friendly, fun and caring facilitators from the Students' Science Research Club and other selected students from Hwa Chong Institution, Singapore. We are guided by a team of dedicated teachers from Hwa Chong Institution and we're excited to have you here for the ${ordinal(upcoming.edition)} iteration of ISYF!`,
+        a: `The ISYF student organizing committee is made up of friendly, fun and caring facilitators from the Students' Science Research Club and other selected students from Hwa Chong Institution, Singapore. We are guided by a team of dedicated teachers from Hwa Chong Institution and we're excited to have you here for the ${ordinal(upcoming.edition)} iteration of ISYF!`,
       },
       {
         q: `What is the theme of ISYF ${year}?`,
