@@ -154,7 +154,7 @@ h1 {
 
 /* Colours by kind of session */
 .ceremony { background-color: var(--crimson-deep); --fg: #ffffff; color: #ffffff; }
-.learn { background-color: #21282c; --fg: var(--plaster); color: var(--plaster); }
+.learn { background-color: #6e1423; --fg: var(--plaster); color: var(--plaster); }
 .fun { background-color: var(--gilt); --fg: var(--ink); color: var(--ink); }
 .rest { background-color: var(--plaster-deep); --fg: var(--ink-soft); color: var(--ink-soft); }
 
@@ -283,7 +283,7 @@ const days = [
       { time: "1200 – 1245", name: "Change into formal clothes", type: "rest", desc: "White shirt with blazer or school uniform." },
       { time: "1300 – 1500", name: "Keynote Lecture and Q&A", type: "ceremony", desc: "Keynote by Pat Hanrahan, followed by a Q&A with student moderators." },
       { time: "1500 – 1600", name: "Poster Exhibition", type: "learn", desc: "Delegates present their posters outside the College Auditorium." },
-      { time: "1600 – 1900", name: "Closing Ceremony and Dinner", type: "ceremony", desc: "The Inspiring Spaces Challenge, closing speeches, prize giving and a buffet dinner. Venue to be confirmed." },
+      { time: "1600 – 1930", name: "Closing Ceremony and Dinner", type: "ceremony", desc: "The Inspiring Spaces Challenge, closing speeches, prize giving and a buffet dinner. Venue to be confirmed." },
     ],
   },
 ];
