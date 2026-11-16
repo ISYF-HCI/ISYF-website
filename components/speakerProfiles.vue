@@ -1,5 +1,5 @@
 <template>
-  <section v-for="group in groups" :key="group.title" class="ruled split" :id="group.id">
+  <section v-for="group in groups" :key="group.title" class="ruled" :id="group.id">
     <div class="split-head">
       <h2>{{ group.title }}</h2>
       <span class="meta">{{ group.note }}</span>
@@ -19,21 +19,18 @@
 </template>
 
 <style scoped>
-/* ========== SPLIT SECTIONS ========== */
-.split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 1rem 3rem;
+/* ========== SECTION HEADINGS ========== */
+/* The heading sits above the list so the profiles use the full width,
+   instead of leaving an empty column on the left */
+.split-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.split-head .meta {
-  margin-top: 0.25rem;
-}
-
-@media screen and (max-width: 760px) {
-  .split {
-    grid-template-columns: 1fr;
-  }
+.split-head h2 {
+  margin: 0;
 }
 
 /* ========== SPEAKERS ========== */
@@ -46,8 +43,8 @@
 
 .speakers li {
   display: grid;
-  grid-template-columns: 10rem minmax(0, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 2rem;
   align-items: start;
   margin: 0;
   padding-block: 1.5rem;

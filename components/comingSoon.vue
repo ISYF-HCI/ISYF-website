@@ -39,7 +39,6 @@
           <li
             v-for="section in upcomingSections"
             :key="section.slug"
-            :class="{ highlighted: requested?.slug === section.slug }"
           >
             <h3>{{ section.label }}</h3>
             <template v-if="section.live">
@@ -160,10 +159,6 @@
   grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 0.5rem 2rem;
-}
-
-.sections li.highlighted {
-  background-color: var(--primary-50);
 }
 
 .sections h3 {
